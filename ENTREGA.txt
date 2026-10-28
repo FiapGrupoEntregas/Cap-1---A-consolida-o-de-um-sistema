@@ -1,0 +1,7 @@
+REPOSITORIO_GITHUB_PRIVADO: https://github.com/SEU_USUARIO/SEU_REPOSITORIO
+VIDEO_DEMONSTRATIVO: https://youtu.be/SEU_VIDEO_ID
+
+Instruções:
+- Substitua os valores acima pelos links finais do repositório privado e do vídeo não listado.
+- Este arquivo deve ser enviado no Portal do Aluno, conforme o enunciado da atividade.
+- O README do repositório também deve conter os mesmos links finais.

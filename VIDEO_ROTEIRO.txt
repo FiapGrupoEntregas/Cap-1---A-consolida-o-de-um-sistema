@@ -1,0 +1,67 @@
+ROTEIRO DO VÍDEO DEMONSTRATIVO (até 10 minutos)
+
+Objetivo:
+Apresentar o funcionamento completo do AgriShield, mostrando o problema, a solução, a arquitetura e a demonstração em execução.
+
+Duração sugerida: 6 a 8 minutos.
+
+ESTRUTURA:
+
+1. ABERTURA (0:00 - 0:40)
+- Mostrar o título do projeto: "Sompo AgriShield — Relevo x Clima"
+- Explicar em uma frase: "Um terreno que parece seguro hoje pode ser perigoso amanhã para a máquina agrícola."
+- Contextualizar o problema: risco de capotamento e ausência de análise de relevo em seguros e operação.
+
+2. PROBLEMA E SOLUÇÃO (0:40 - 1:30)
+- Explicar que o sistema cruza relevo + clima + operação da máquina.
+- Mostrar que o objetivo é orientar a seguradora e o operador sobre risco e limite de inclinação.
+- Destacar que a solução entrega mapa de risco, limite dinâmico e perfil de subscrição.
+
+3. ARQUITETURA DO SISTEMA (1:30 - 2:30)
+- Mostrar a visão geral da arquitetura:
+  - API FastAPI
+  - Front-end Streamlit
+  - Banco SQLite
+  - Broker MQTT
+  - ESP32 simulado em Wokwi
+  - Dados climáticos da Open-Meteo
+- Explicar que o backend calcula o risco, publica o limite e grava a telemetria e auditoria.
+
+4. DEMONSTRAÇÃO DO FRONT-END (2:30 - 4:30)
+- Abrir o mapa de risco da fazenda.
+- Destacar a previsão de 7 dias e os motivos dos alertas.
+- Mostrar o painel do equipamento ao vivo.
+- Mostrar uma máquina cadastrada, limite do dia e status do dispositivo.
+- Mostar a aba de relatórios ou replay, se houver tempo.
+
+5. DEMONSTRAÇÃO DO DISPOSITIVO / ESP32 (4:30 - 6:00)
+- Explicar que o equipamento recebe o limite do dia por MQTT.
+- Mostrar a telemetria do inclinômetro / simulação do Wokwi.
+- Mostrar o alerta local, quando a máquina está em situação crítica.
+- Explicar que o limite é calculado com base no clima e no relevo.
+
+6. SEGURANÇA E AUDITORIA (6:00 - 6:45)
+- Explicar que a API exige autenticação por chave em rotas protegidas.
+- Mostrar que o sistema registra decisões e mantém rastreabilidade.
+- Destacar que o projeto evita expor dados sensíveis e mantém a trilha de auditoria.
+
+7. FECHAMENTO (6:45 - 7:30)
+- Resumir os ganhos do projeto:
+  - previsibilidade
+  - redução de risco operacional
+  - melhor subscrição
+  - suporte à decisão
+- Agradecer e fechar com mensagem final: "Este é o AgriShield e sua proposta de decisão orientada por dados para operar com segurança."
+
+DICAS DE GRAVAÇÃO:
+- Use narracao em voz ou legenda curta.
+- Mantenha o vídeo em tela de desktop com incremento de zoom nas áreas importantes.
+- Não precisa mostrar todas as telas; foque em 3 pontos: mapa, limite do equipamento e arquitetura.
+- Faça a narração em português natural, clara e objetiva.
+- Grave em modo de demonstração real, sem pausas longas.
+
+SUGESTÃO DE NARRAÇÃO:
+"Este projeto, chamado AgriShield, foi desenvolvido para responder a um problema real do setor agrícola: um terreno que parece seguro hoje pode virar um cenário de risco amanhã, especialmente quando a chuva aumenta e o solo perde aderência. O sistema cruza dados de relevo, clima e operação da máquina para calcular em tempo real o limite de inclinação seguro. A API processa esses dados, a interface mostra os alertas e o equipamento recebe o limite por MQTT. Assim, a seguradora consegue analisar o risco da área e o operador recebe aviso antes que a situação se torne crítica."
+
+OBSERVAÇÃO:
+Este roteiro serve para gravar o vídeo e depois publicar no YouTube como "não listado". O vídeo deve ser carregado com privacidade não listada para manter acesso apenas pelo link.

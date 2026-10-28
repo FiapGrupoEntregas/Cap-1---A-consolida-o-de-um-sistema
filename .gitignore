@@ -1,0 +1,63 @@
+# Dados tabulares (não versionar datasets brutos)
+*.csv
+*.tsv
+*.xls
+*.xlsx
+# Exceções: a amostra anonimizada (D1) e os fixtures de teste são pequenos e vão para o Git
+!data/sample/*.csv
+!api/tests/fixtures/*.csv
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+
+# Segredos e configuração local. `.env.example` é versionado de propósito: é o modelo que o
+# time copia. `.streamlit/config.toml` (tema) fica no Git; só o secrets.toml sai.
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+iot/include/mqtt_tls_config.h
+
+# Dados brutos baixados por script (ver document/dados-e-modelo.md)
+data/raw/
+
+# Parcial da geração do dataset (D2): reconstruível, e só serve para retomar
+data/.dataset_parcial.jsonl
+
+# Banco local (I3). O WAL, o shm e o journal são arquivos de runtime do SQLite e podem carregar
+# telemetria: ficam de fora junto com o .db.
+*.db
+*.db-shm
+*.db-wal
+*.db-journal
+*.sqlite3
+
+# PlatformIO / IoT
+.pio/
+
+# Claude Code (configuração pessoal; agentes e skills em .claude/ são versionados)
+.claude/settings.local.json
+
+# SO e editores. `.vscode/` sem barra no meio vale em **qualquer** profundidade — a versão
+# anterior listava `.vscode/c_cpp_properties.json` e afins, que o Git ancora na raiz e por isso
+# nunca alcançavam `iot/.vscode/` (60 KB de arquivo gerado pelo PlatformIO).
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Cobertura de teste (nenhuma ferramenta gera isso hoje; é seguro deixar pronto)
+.coverage
+htmlcov/
+
+# Configuração local do Obsidian (o `workspace.json` guarda painéis abertos e
+# últimos arquivos: muda a cada vez que alguém abre o editor).
+.obsidian/
+
+# Lock do LibreOffice/Word (aparece enquanto o arquivo está aberto)
+.~lock.*#

@@ -1,0 +1,102 @@
+{
+  "gerado_em": "2026-09-21T11:28:21+00:00",
+  "linhas": 2256,
+  "amostra_pedida": 2500,
+  "seed": 42,
+  "fontes": {
+    "apolices": "PSR/SISSER — Ministério da Agricultura, CC-BY (D1, tabela policy)",
+    "relevo": "Open-Meteo Elevation — Copernicus DEM GLO-90 (~90 m)",
+    "clima_ate_2021": "Open-Meteo Archive (ERA5)",
+    "clima_2022_em_diante": "Open-Meteo Historical Forecast"
+  },
+  "features": [
+    "proposal_id",
+    "state",
+    "municipality",
+    "geocode_ibge",
+    "crop",
+    "crop_group",
+    "area_ha",
+    "lat",
+    "lon",
+    "coordinate_source",
+    "policy_year",
+    "start_date",
+    "end_date",
+    "start_month",
+    "coverage_days",
+    "slope_mean_deg",
+    "slope_max_deg",
+    "elevation_mean_m",
+    "elevation_range_m",
+    "aspect_label",
+    "pct_lowland",
+    "pct_exposed",
+    "rain_total_mm",
+    "rain_max_day_mm",
+    "days_rain72h_ge30",
+    "days_thunderstorm",
+    "gust_max_kmh",
+    "temp_max_c",
+    "rh_min_pct",
+    "dry_spell_max_days",
+    "weather_days"
+  ],
+  "rotulos": {
+    "target_claim": {
+      "positivos": 390,
+      "taxa": 0.1729
+    },
+    "target_rain_claim": {
+      "positivos": 94,
+      "taxa": 0.0417
+    }
+  },
+  "composicao": {
+    "por_ano": {
+      "2021": 432,
+      "2020": 387,
+      "2024": 305,
+      "2022": 269,
+      "2023": 235,
+      "2019": 201,
+      "2016": 160,
+      "2017": 139,
+      "2018": 128
+    },
+    "por_uf": {
+      "PR": 837,
+      "RS": 470,
+      "SP": 312,
+      "SC": 169,
+      "MG": 147,
+      "GO": 122,
+      "MS": 113,
+      "MT": 34,
+      "ES": 19,
+      "BA": 12,
+      "TO": 10,
+      "MA": 7,
+      "SE": 2,
+      "PI": 1,
+      "PA": 1
+    },
+    "coordinate_source": {
+      "dms": 2022,
+      "decimal": 234
+    },
+    "culturas_distintas": 32
+  },
+  "execucao_atual": {
+    "policies_sampled": 0,
+    "rows_built": 0,
+    "rows_discarded": 0,
+    "discarded": {},
+    "elevation_calls": 0,
+    "weather_calls": 0,
+    "weather_groups": 0,
+    "api_calls": 0,
+    "by_state": {},
+    "by_year": {}
+  }
+}

@@ -1,0 +1,52 @@
+# O que NÃO vai para o contexto de build.
+#
+# Sem este arquivo o contexto passaria de 1,8 GB: `api/.venv` (537 MB),
+# `front-web/.venv` (424 MB), `api/agrishield.db` (399 MB) e `data/raw` (473 MB).
+# O `docker build` empacota o contexto **antes** de ler o Dockerfile, então excluir
+# aqui é o que faz o build ser rápido — o `COPY` seletivo não basta.
+
+# Ambientes virtuais: a imagem instala as dependências dela, do requirements.txt
+.venv/
+*/.venv/
+__pycache__/
+*.py[cod]
+
+# Banco de runtime: fica em volume, nunca dentro da imagem (ver docker-compose.yml)
+*.db
+*.db-wal
+*.db-shm
+*.db-journal
+
+# Dados brutos baixados por script (ver document/dados-e-modelo.md).
+# `data/sample/` **entra** na imagem: é a amostra versionada que semeia a demo.
+data/raw/
+
+# Git e histórico
+.git/
+.github/
+
+# Cache de ferramentas
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Segredos locais — a imagem recebe configuração por variável de ambiente
+.env
+*/.env
+.streamlit/secrets.toml
+
+# Firmware: não roda em container (o ESP32 é simulado no Wokwi)
+iot/
+.pio/
+
+# Editor e sistema
+.vscode/
+.idea/
+.DS_Store
+
+# Artefatos de agente e documentação que a imagem não executa
+.claude/
+document/
+feature/
+assets/

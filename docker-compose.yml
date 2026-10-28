@@ -1,0 +1,93 @@
+# AgriShield em Docker, para rodar o projeto local sem instalar Python, uv ou dependências.
+#
+#   cp docker/.env.example .env
+#   docker compose up --build
+#
+#   API   → http://localhost:8000/docs
+#   Front → http://localhost:8501
+#
+# Semear a base real (amostra versionada, ~450 linhas) depois de subir:
+#   docker compose run --rm api python scripts/load_psr.py --sample
+#
+# O que **não** está aqui: o ESP32. Ele é simulado no Wokwi, que roda no navegador — não
+# há container para ele, e ele não alcança a rede do Docker (ver o serviço `mosquitto`).
+
+name: agrishield
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: docker/api.Dockerfile
+    image: agrishield-api:local
+    ports:
+      - "8000:8000"
+    environment:
+      # `dev` é obrigatório para a demo local, e é uma escolha consciente: fora de `dev` a
+      # API exige `X-API-Key` também nas **leituras** (o front só manda chave nas escritas)
+      # e recusa broker público. Ver contrato-mqtt.md § Segurança do transporte.
+      AGRISHIELD_ENVIRONMENT: dev
+      # A MESMA variável alimenta a chave aceita pela API e a que o front envia. É o que
+      # torna **impossível** o descasamento que o run-demo.sh precisa avisar: as duas
+      # pontas leem de uma fonte só.
+      AGRISHIELD_API_KEYS: ${AGRISHIELD_API_KEY:?defina AGRISHIELD_API_KEY no .env}
+      # Banco em volume: sobrevive a `docker compose down` e não entra na imagem.
+      AGRISHIELD_DATABASE_URL: sqlite:////data/agrishield.db
+      # Broker: o **público**, por padrão, e isso é uma decisão de produto, não preguiça.
+      # O ESP32 roda no Wokwi e entra na rede `Wokwi-GUEST`, que é simulada: o tráfego dela
+      # sai pela nuvem da Wokwi, não pela máquina de quem apresenta. Um broker em rede local
+      # é inalcançável de lá, então o público é o único ponto de encontro entre o dispositivo
+      # e a API. Para trabalho offline com o simulador, ver o serviço `mosquitto` abaixo.
+      AGRISHIELD_MQTT_HOST: ${AGRISHIELD_MQTT_HOST:-broker.hivemq.com}
+      AGRISHIELD_MQTT_PORT: ${AGRISHIELD_MQTT_PORT:-1883}
+      AGRISHIELD_MQTT_ENABLED: ${AGRISHIELD_MQTT_ENABLED:-true}
+      # Prefixo próprio evita cruzar mensagens com outro grupo no broker público.
+      AGRISHIELD_MQTT_TOPIC_PREFIX: ${AGRISHIELD_MQTT_TOPIC_PREFIX:-agrishield/fiap-sompo-2026}
+    volumes:
+      - agrishield-db:/data
+    restart: unless-stopped
+
+  front:
+    build:
+      context: .
+      dockerfile: docker/front.Dockerfile
+    image: agrishield-front:local
+    ports:
+      - "8501:8501"
+    environment:
+      # `api` é o nome do serviço: o Docker resolve para o IP do container.
+      AGRISHIELD_API_URL: http://api:8000
+      AGRISHIELD_API_KEY: ${AGRISHIELD_API_KEY:?defina AGRISHIELD_API_KEY no .env}
+    depends_on:
+      api:
+        # Espera o /api/v1/health responder, não só o container existir — senão a primeira
+        # tela abre com erro de conexão.
+        condition: service_healthy
+    restart: unless-stopped
+
+  # Broker local, **opt-in**: `docker compose --profile broker up`.
+  #
+  # Não sobe por padrão porque o ESP32 do Wokwi não o alcança (ver o comentário do serviço
+  # `api`), e um broker no ar sem ninguém usando só confunde quem for apresentar.
+  #
+  # Para que serve: desenvolver **sem internet** ou sem depender de broker público, com o
+  # simulador de dispositivo no lugar do Wokwi. A porta 1883 é publicada na máquina, então
+  # clientes fora da rede do compose falam com ele pelo IP da LAN — medido em
+  # document/evidencias/2026-09-27-execucao-em-docker.md § 4b.
+  #
+  #   docker compose --profile broker up -d
+  #   # no .env: AGRISHIELD_MQTT_HOST=mosquitto
+  #   AGRISHIELD_MQTT_HOST=localhost uv run --project api python scripts/simulate_device.py
+  mosquitto:
+    profiles: ["broker"]
+    image: eclipse-mosquitto:2
+    ports:
+      - "1883:1883"
+    volumes:
+      - ./docker/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+    restart: unless-stopped
+
+volumes:
+  # Nomeado, para `docker compose down` não apagar o que foi semeado. Para zerar de
+  # verdade: `docker compose down -v`.
+  agrishield-db:

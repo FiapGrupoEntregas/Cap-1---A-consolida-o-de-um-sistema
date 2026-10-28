@@ -1,0 +1,104 @@
+[
+  {
+    "url": "http://127.0.0.1:8123/api/v1/farms/cafe-carmo-de-minas/terrain",
+    "status": 200,
+    "bytes": 23525,
+    "frio_ms": 828.2,
+    "quentes_ms": [
+      9.1,
+      2.5,
+      1.6,
+      1.2,
+      0.9
+    ],
+    "quente_mediana_ms": 1.6,
+    "quente_maximo_ms": 9.1,
+    "fazenda": "cafe-carmo-de-minas",
+    "rota": "terrain"
+  },
+  {
+    "url": "http://127.0.0.1:8123/api/v1/farms/cafe-carmo-de-minas/risk",
+    "status": 200,
+    "bytes": 81978,
+    "frio_ms": 252.0,
+    "quentes_ms": [
+      41.6,
+      37.3,
+      40.0,
+      42.8,
+      42.9
+    ],
+    "quente_mediana_ms": 41.6,
+    "quente_maximo_ms": 42.9,
+    "fazenda": "cafe-carmo-de-minas",
+    "rota": "risk"
+  },
+  {
+    "url": "http://127.0.0.1:8123/api/v1/farms/graos-sorriso/terrain",
+    "status": 200,
+    "bytes": 22992,
+    "frio_ms": 215.1,
+    "quentes_ms": [
+      3.5,
+      2.9,
+      2.8,
+      2.9,
+      2.9
+    ],
+    "quente_mediana_ms": 2.9,
+    "quente_maximo_ms": 3.5,
+    "fazenda": "graos-sorriso",
+    "rota": "terrain"
+  },
+  {
+    "url": "http://127.0.0.1:8123/api/v1/farms/graos-sorriso/risk",
+    "status": 200,
+    "bytes": 86656,
+    "frio_ms": 358.1,
+    "quentes_ms": [
+      36.8,
+      37.9,
+      47.2,
+      43.6,
+      39.1
+    ],
+    "quente_mediana_ms": 39.1,
+    "quente_maximo_ms": 47.2,
+    "fazenda": "graos-sorriso",
+    "rota": "risk"
+  },
+  {
+    "url": "http://127.0.0.1:8123/api/v1/farms/uva-serra-gaucha/terrain",
+    "status": 200,
+    "bytes": 23515,
+    "frio_ms": 207.5,
+    "quentes_ms": [
+      8.0,
+      6.4,
+      4.1,
+      2.9,
+      2.2
+    ],
+    "quente_mediana_ms": 4.1,
+    "quente_maximo_ms": 8.0,
+    "fazenda": "uva-serra-gaucha",
+    "rota": "terrain"
+  },
+  {
+    "url": "http://127.0.0.1:8123/api/v1/farms/uva-serra-gaucha/risk",
+    "status": 200,
+    "bytes": 102126,
+    "frio_ms": 356.1,
+    "quentes_ms": [
+      42.2,
+      40.0,
+      38.9,
+      37.4,
+      38.6
+    ],
+    "quente_mediana_ms": 38.9,
+    "quente_maximo_ms": 42.2,
+    "fazenda": "uva-serra-gaucha",
+    "rota": "risk"
+  }
+]

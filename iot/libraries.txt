@@ -1,0 +1,10 @@
+# Bibliotecas para o Wokwi web (aba "Library Manager" > libraries.txt).
+# Manter igual ao lib_deps do platformio.ini.
+# WiFiClientSecure vem do core Arduino-ESP32; nao requer biblioteca externa.
+PubSubClient
+Adafruit MPU6050
+Adafruit Unified Sensor
+DHT sensor library
+ArduinoJson
+Adafruit SSD1306
+Adafruit GFX Library
