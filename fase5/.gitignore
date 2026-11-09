@@ -1,0 +1,6 @@
+/enunciado.html
+/relatorio_final.md
+.venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/

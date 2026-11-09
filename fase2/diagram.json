@@ -1,0 +1,105 @@
+{
+  "version": 1,
+  "author": "FarmTech Solutions",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-breadboard",
+      "id": "bb1",
+      "top": -60,
+      "left": -180,
+      "attrs": {}
+    },
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp",
+      "top": 120,
+      "left": -40,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht",
+      "top": -200,
+      "left": -60,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-photoresistor-sensor",
+      "id": "ldr",
+      "top": -374.7,
+      "left": 80.9,
+      "rotate": 90,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd",
+      "top": -250,
+      "left": 300,
+      "attrs": { "pins": "i2c" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "releAgua",
+      "top": -195.6,
+      "left": 32.6,
+      "attrs": { "color": "blue", "label": "BOMBA" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": -120.85,
+      "left": 67.2,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btnN",
+      "top": 380,
+      "left": -220,
+      "attrs": { "color": "green", "label": "N", "key": "z" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btnP",
+      "top": 380,
+      "left": -80,
+      "attrs": { "color": "green", "label": "P", "key": "x" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btnK",
+      "top": 380,
+      "left": 60,
+      "attrs": { "color": "green", "label": "K", "key": "c" }
+    }
+  ],
+  "connections": [
+    ["esp:TX", "$serialMonitor:RX", "", []],
+    ["esp:RX", "$serialMonitor:TX", "", []],
+    ["esp:3V3", "bb1:tp.1", "red", ["v-40", "h-79.81", "v-156.5"]],
+    ["esp:GND.1", "bb1:tn.1", "black", ["v-20", "h-160"]],
+    ["dht:VCC", "bb1:tp.8", "red", ["v0"]],
+    ["dht:GND", "bb1:tn.10", "black", ["v0"]],
+    ["dht:SDA", "esp:15", "green", ["v60", "h131.5", "v317.9"]],
+    ["ldr:AO", "esp:34", "orange", ["v60", "h-369.2", "v281.7"]],
+    ["btnN:1.l", "esp:12", "green", ["v-40", "h180"]],
+    ["btnN:2.l", "bb1:tn.1", "black", ["v68", "h86"]],
+    ["btnP:1.l", "esp:13", "green", ["v-40", "h80"]],
+    ["btnP:2.l", "bb1:tn.1", "black", ["v0.8", "h-54"]],
+    ["btnK:1.l", "esp:14", "green", ["v-40", "h20"]],
+    ["btnK:2.l", "bb1:tn.1", "black", ["v68", "h-194"]],
+    ["r1:1", "releAgua:A", "blue", ["h0"]],
+    ["r1:2", "esp:27", "blue", ["v0"]],
+    ["lcd:VCC", "esp:VIN", "red", ["h0"]],
+    ["lcd:SDA", "esp:21", "yellow", ["h-35.2", "v395.8"]],
+    ["lcd:SCL", "esp:22", "orange", ["h-16", "v357.5"]],
+    ["releAgua:C", "bb1:tn.17", "black", ["v0"]],
+    ["ldr:VCC", "bb1:tp.29", "red", ["v0"]],
+    ["ldr:GND", "bb1:tp.28", "black", ["v0"]],
+    ["lcd:VCC", "bb1:tp.35", "red", ["h0"]],
+    ["lcd:GND", "bb1:tn.34", "black", ["h0"]]
+  ],
+  "dependencies": {}
+}

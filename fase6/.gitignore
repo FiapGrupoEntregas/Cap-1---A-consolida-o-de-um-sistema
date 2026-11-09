@@ -1,0 +1,43 @@
+# Documentos internos do grupo (enunciado e planejamento), fora do repositório avaliado
+tmp.md
+CHECKLIST_ENTREGA.md
+IR_ALEM.md
+ROTEIRO_APRESENTACAO.md
+EXPLICACAO_GRAFICOS.md
+
+# Ambiente Python (uv / venv)
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+.virtual_documents/
+
+# Execuções locais do notebook: YOLOv5, runs, logs, pesos baixados e candidatas do Open Images
+.trabalho/
+# Pastas que o YOLOv5/Ultralytics criam se rodarem fora de .trabalho/
+yolov5/
+runs/
+weights/
+*.log
+
+# Pesos de modelos: só o best.pt escolhido vai para o repositório (usado no "Ir Além")
+*.pt
+!models/best.pt
+
+# Variáveis de ambiente e segredos
+.env
+
+# Sistema operacional e editores
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+*~

@@ -1,0 +1,42 @@
+[project]
+name = "farmtech-fase6-visao-computacional"
+version = "0.1.0"
+description = "FarmTech Solutions – Fase 6 (FIAP): YOLOv5 customizado, YOLO padrão e CNN do zero"
+requires-python = ">=3.10,<3.14"
+dependencies = [
+    # YOLOv5: mesmas dependências do requirements.txt do ultralytics/yolov5,
+    # necessárias para treinar e para carregar o best.pt via torch.hub
+    "torch>=1.8.0",
+    "torchvision>=0.9.0",
+    "ultralytics>=8.4.164",
+    "ultralytics-thop>=2.2.1",
+    "opencv-python>=4.6.0",
+    "psutil",
+    "pyyaml>=5.3.1",
+    "requests>=2.32.2",
+    "scipy>=1.4.1",
+    "seaborn>=0.11.0",
+    "packaging",
+    "setuptools>=70.0.0",
+    # CNN do zero (Entrega 2)
+    "tensorflow>=2.16",
+    # Análise, gráficos e imagens
+    "numpy>=1.23.5",
+    "pandas>=1.1.4",
+    "matplotlib>=3.3",
+    "scikit-learn",
+    "pillow>=10.3.0",
+]
+
+[project.optional-dependencies]
+# Só para refazer o dataset do zero (seção 1 do notebook): CLIP é o codificador de texto do YOLO-World,
+# usado na pré-rotulação dos tratores
+dataset = ["clip @ git+https://github.com/ultralytics/CLIP.git"]
+
+[dependency-groups]
+# Instalado por padrão no `uv sync`: permite abrir o notebook localmente
+dev = ["jupyterlab", "ipykernel"]
+
+[tool.uv]
+# Projeto de notebooks/scripts, não é um pacote Python instalável
+package = false
