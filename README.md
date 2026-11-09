@@ -1,358 +1,202 @@
 # FIAP - Faculdade de Informática e Administração Paulista
 
 <p align="center">
-<a href="https://www.fiap.com.br/"><img src="assets/logo-fiap.png" alt="FIAP - Faculdade de Informática e Administração Paulista" border="0" width=40% height=40%></a>
+<a href="https://www.fiap.com.br/"><img src="assets/logo-fiap.png" alt="FIAP - Faculdade de Informática e Administração Paulista" border="0" width="40%"></a>
 </p>
 
 <br>
 
-# Sompo AgriShield — Relevo × Clima
+# FarmTech Solutions — Fase 7: A consolidação de um sistema
 
-> **Um terreno inclinado que é seguro hoje pode capotar um trator amanhã.**
-
-> 🏆 **Este grupo deseja concorrer ao prêmio de melhor projeto Sompo.** A solução pode ser
-> compartilhada com a empresa, nos termos do enunciado do Challenge.
+> Um único sistema de gestão da fazenda que reúne tudo o que a FarmTech construiu nas Fases 1 a 6
+> e avisa os funcionários, por e-mail, quando os sensores pedem uma ação corretiva.
 
 ## 👨‍🎓 Integrantes
 
-| Nome | RM | Turma |
-| -- | -- | -- |
-| Jonattas Felipe | RM572692 | 1TIAOB |
-| Natanael Filho | RM572474 | 1TIAOB |
-| Pedro Henrique | RM571394 | 1TIAOB |
-| Andrews Oliveira | RM572311 | 1TIAOB |
+| Nome | RM |
+|---|---|
+| Jonattas Felipe | RM572692 |
+| Natanael Filho | RM572474 |
+| Pedro Henrique | RM571394 |
+| Andrews Oliveira | RM572311 |
 
-## 👩‍🏫 Professores:
+## 👩‍🏫 Professores
+
 ### Tutor(a)
-- <a href="https://github.com/SabrinaOtoni">Sabrina Otoni</a>
+- Sabrina Otoni
 
-## 📜 O que é
+### Coordenador(a)
+- <a href="https://www.linkedin.com/in/andregodoichiovato/">André Godoi Chiovato</a>
 
-O seguro de máquinas agrícolas no Brasil é reativo: a seguradora só age depois do acidente. E um dos
-fatores que mais pesam no risco, **o relevo**, praticamente não é considerado. Uma encosta de 12° é
-tranquila com o solo seco; depois de 40 mm de chuva o solo perde aderência e a mesma encosta passa a
-ter risco de capotamento. Nas baixadas a máquina atola, e as cristas expostas pegam raio e rajada.
+## 📜 Descrição
 
-O **Sompo AgriShield** cruza **relevo** e **clima** para prevenir esses acidentes, e entrega quatro
-coisas:
+Ao longo do ano a FarmTech Solutions construiu peças separadas de uma solução de Agricultura 4.0:
+cálculo de área e insumos, sensores de irrigação no ESP32, banco Oracle, dashboard com Machine
+Learning, modelos preditivos e visão computacional. Nesta fase as peças viram **um sistema só**:
 
-1. **Mapa de risco por talhão e por dia.** Da elevação por satélite calculamos inclinação,
-   orientação e classe de terreno de cada fazenda. Cruzando com a previsão do tempo, o sistema
-   mostra por 7 dias **onde e quando** operar é perigoso — sempre com o motivo, em números.
-2. **Limite de inclinação dinâmico na máquina.** A plataforma calcula o limite seguro do dia
-   (ex.: 15° com solo seco, 10° encharcado) e o envia por MQTT a um **ESP32** instalado no
-   equipamento, que mede a inclinação real e alerta o operador na hora, mesmo sem internet.
-3. **Perfil de terreno para subscrição.** Na cotação, a Sompo vê um perfil objetivo do terreno
-   (área íngreme, baixadas, áreas expostas, classe A/B/C), sem questionário e sem hardware.
-4. **Registro da frota.** Cada máquina é cadastrada e vinculada ao dispositivo instalado nela, para
-   se saber **de qual máquina** vem cada alerta.
+1. **Pasta única** com os serviços de cada fase, um por subpasta (`fase1/` … `fase6/`).
+2. **Dashboard final**, evoluída da Fase 4, que dispara cada serviço por botão ou por comando de
+   terminal.
+3. **Serviço de alerta na AWS** (Amazon SNS) que monitora as leituras dos sensores e envia aos
+   funcionários um e-mail com o problema e a **ação corretiva** sugerida.
 
-## ⚙️ Como funciona
+Como os serviços só dependem dos dados que recebem, o mesmo sistema pode ser adaptado a outro
+setor trocando as bases de dados.
 
-### Arquitetura final: entrada → banco → modelo → saída
+## 🧭 Status da entrega
+
+| Item do enunciado | Status |
+|---|---|
+| Pasta única com as Fases 1, 2, 3 e 6 (e 4 e 5) em subpastas | ✅ |
+| Pastas das fases saneadas; documentação centralizada em [`docs/`](docs/) | ✅ |
+| `.env` único na raiz, com o Oracle da FIAP | ✅ conexão testada em 08/11/2026 |
+| Dashboard final que dispara cada serviço por botão | ⬜ a fazer |
+| Comando de terminal que dispara cada serviço | ⬜ a fazer |
+| Serviço de alerta na AWS (SNS + e-mail) com ações corretivas | ⬜ a fazer |
+| Prints do console da AWS comentados | ⬜ a fazer |
+| Vídeo demonstrativo (até 10 min, não listado) | ⬜ a fazer |
+| Ir Além 1 (AWS Rekognition) e Ir Além 2 (algoritmo genético) | ⬜ opcionais |
+
+O que falta, frente por frente, está no [plano de entrega](docs/plano-entrega/README.md).
+
+## 🗺️ As fases dentro do sistema
+
+| Fase | Código | O que entrega | Tecnologias |
+|---|---|---|---|
+| 1 — Base de dados inicial | [`fase1/`](fase1/) · [docs](docs/fases/fase1.md) | Programa de terminal que calcula área de plantio e insumos (manga e cana) e guarda os registros em CSV; estatística dos registros e clima da Open-Meteo em R | Python, R |
+| 2 — IoT e automação | [`fase2/`](fase2/) · [docs](docs/fases/fase2.md) | ESP32 no Wokwi que liga a bomba de irrigação do tomate a partir de umidade (DHT22), pH (LDR) e N/P/K (botões), com LCD; previsão do tempo em Python (código S/L/C digitado no Monitor Serial do ESP32); regressão logística da decisão de irrigar em R | C++ (Arduino), Python, R |
+| 3 — Banco de dados estruturado | [`fase3/`](fase3/) · [docs](docs/fases/fase3.md) | Tabela `SENSOR_DADOS` no Oracle (criação, carga e consultas) e dashboard Streamlit que lê o Oracle, com página de ML de recomendação de cultura | Oracle SQL, Python, Streamlit |
+| 4 — Dashboard com Data Science | [`fase4/`](fase4/) · [docs](docs/fases/fase4.md) | ESP32 envia leituras de solo para uma API FastAPI, que grava no Oracle (`SOIL_DATA`); dashboard Streamlit treina uma Random Forest (scikit-learn) e prevê o próximo ciclo | Python, FastAPI, Oracle, Streamlit, C++ |
+| 5 — Machine Learning na cabeça | [`fase5/`](fase5/) · [docs](docs/fases/fase5.md) | Notebook de rendimento de safra: análise exploratória, clusterização, outliers e cinco modelos de regressão | Python, scikit-learn |
+| 6 — Visão computacional | [`fase6/`](fase6/) · [docs](docs/fases/fase6.md) | Notebook com YOLOv5 customizado (trator e vaca), comparado ao YOLO padrão e a uma CNN treinada do zero; pesos treinados em `models/best.pt` | Python, PyTorch, YOLOv5 |
+| 7 — Consolidação | raiz · [plano](docs/plano-entrega/README.md) | Dashboard central e alerta na AWS | Streamlit, Amazon SNS |
+
+As pastas das fases guardam só código e dados. O que cada fase faz, como rodar e os detalhes
+técnicos estão em [`docs/fases/`](docs/fases/).
+
+## 🏗️ Arquitetura
+
+As linhas tracejadas são as partes da Fase 7 que ainda estão em construção.
 
 ```mermaid
 flowchart LR
-    subgraph Fontes["Fontes de dados"]
-        OM["Open-Meteo<br/>elevação · previsão · histórico"]
-        PSR["PSR/SISSER<br/>1,5 mi de apólices e sinistros reais"]
+    subgraph Campo["Campo (Wokwi)"]
+        ESP2["ESP32 — Fase 2<br/>irrigação automática"]
+        ESP4["ESP32 — Fase 4<br/>sensores de solo"]
     end
-    subgraph Servidor["API — FastAPI"]
-        ING["Ingestão e pipeline<br/>D1, D2"]
-        MOD["Modelo preditivo<br/>D3"]
-        RISK["Motor de risco por regras<br/>W2, W3, W7"]
-        LIM["Limite dinâmico<br/>W4"]
-        SEC["Segurança e auditoria<br/>I5"]
-        DB[("SQLite — 8 tabelas<br/>policy · telemetry · device_event<br/>machine · decision_log")]
-    end
-    WEB["front-web — Streamlit<br/>mapa · painel · maquinário<br/>subscrição · relatórios · replay"]
-    BR[("Broker MQTT")]
-    ESP["ESP32 no Wokwi<br/>inclinômetro · alertas · capotamento"]
-    SIM["Simulador de dispositivo<br/>I6"]
+    OM["Open-Meteo<br/>previsão do tempo"]
+    API["API FastAPI — Fase 4"]
+    ORA[("Oracle FIAP<br/>SENSOR_DADOS · SOIL_DATA")]
+    DASH["Dashboard central — Streamlit<br/>(evolução da Fase 4)"]
+    F1["Fase 1<br/>Python + R"]
+    F5["Fase 5<br/>notebook de ML"]
+    F6["Fase 6<br/>YOLO"]
+    SNS["Amazon SNS<br/>farmtech-alertas"]
+    MAIL["E-mail dos<br/>funcionários"]
 
-    PSR --> ING --> DB
-    OM --> RISK
-    OM --> ING
-    ING --> MOD --> RISK
-    RISK --> LIM
-    RISK --> DB
-    LIM <--> BR
-    BR <--> ESP
-    BR <--> SIM
-    DB --> SEC
-    WEB -->|REST| RISK
-    WEB -->|REST| DB
+    OM --> ESP2
+    ESP4 -->|HTTP POST /soil| API --> ORA
+    DASH -->|REST| API
+    DASH -.->|dispara| F1
+    DASH -.->|dispara| F5
+    DASH -.->|dispara| F6
+    API -.->|leitura fora do limite| SNS
+    F6 -.->|detecção| SNS
+    SNS -.-> MAIL
 ```
 
-**O caminho completo, em sete passos:** as apólices do PSR são baixadas, anonimizadas e carregadas
-(D1) → cruzadas com relevo e clima da vigência viram o dataset (D2) → o modelo é treinado e
-comparado ao baseline por regras (D3) → o ESP32 publica inclinação e eventos por MQTT, que a API
-valida, deduplica e grava (I2, I3) → o motor cruza relevo e clima e gera nível, motivo e **limite do
-dia**, com o modelo ao lado (W2, W3, W13) → o resultado sai no mapa, no painel, nos relatórios e
-**de volta na máquina** (W1–W14) → e cada decisão vai para a trilha de auditoria (I5).
+## 🔔 Serviço de alertas na AWS (em construção)
 
-**O alerta ao operador vem de regras explicáveis**, não de um modelo caixa-preta: cada alerta mostra
-o motivo com o número que o disparou (*"42 mm de chuva em 72 h: solo encharcado, limite cai para
-10°"*). Os limiares vivem em um documento só, [regras-de-risco.md](document/regras-de-risco.md), e
-o código os lê de lá.
+**Planejado:** cada leitura que chega à API da Fase 4 passa por regras simples. Quando uma regra
+dispara, a mensagem é publicada num tópico do **Amazon SNS** com assinatura de e-mail dos
+funcionários. Os limites são os mesmos do firmware da Fase 2 (`fase2/src/farmTech.ino`):
 
-Ao lado das regras, um **modelo preditivo treinado com 2.256 apólices reais** do seguro rural
-(PSR/SISSER) dá uma segunda leitura para a seguradora. Ele supera o baseline por regras no teste de
-2024, mas com ressalvas do tamanho do número — por isso **informa, e não decide**.
-
-Três responsabilidades separadas, e a separação é verificável no código:
-
-| Camada | O que faz | O que **não** faz |
-|---|---|---|
-| `api/` | Calcula todo o risco, publica o limite, guarda telemetria e a trilha de auditoria | — |
-| `front-web/` | Só exibe o que a API já calculou | nenhuma regra de negócio |
-| `iot/` | Mede a inclinação e aplica o limite que recebeu | não decide o limite |
-
-Fluxos e endpoints em [arquitetura.md](document/arquitetura.md) · estrutura do banco em
-[esquema-do-banco.md](document/esquema-do-banco.md) · contrato MQTT em
-[contrato-mqtt.md](document/contrato-mqtt.md) · pipeline e modelo em
-[dados-e-modelo.md](document/dados-e-modelo.md).
-
-📖 **Detalhe completo** — arquitetura, cada feature com o código e como vê-la funcionando, onde há
-IA no projeto, as decisões e as limitações declaradas: **[document/guia-do-projeto.md](document/guia-do-projeto.md)**.
-
-## 🧩 Decisões técnicas
-
-As escolhas que explicam o sistema, com o registro completo (contexto, decisão e consequências) em
-[decisoes.md](document/decisoes.md):
-
-| Decisão | Por quê |
+| Condição | Ação corretiva sugerida |
 |---|---|
-| **Relevo × clima** em vez do MVP amplo original ([ADR-001](document/decisoes.md), [002](document/decisoes.md)) | A Sompo apontou que nenhum projeto tratava terreno; e cortar escopo foi o que tornou a entrega possível no prazo |
-| **O alerta vem de regras, não do modelo** ([ADR-006](document/decisoes.md), [010](document/decisoes.md)) | O rótulo disponível é sinistro de seguro agrícola, não acidente de máquina. O modelo informa a seguradora; quem alerta o operador são regras auditáveis |
-| **Regra de negócio só na API** ([ADR-004](document/decisoes.md)) | O front só exibe e o firmware só aplica o limite recebido — a regra existe em um lugar, testável |
-| **Nenhum dado pessoal** ([ADR-011](document/decisoes.md)) | Nome e documento do CSV público são descartados na leitura, com teste que falha se algo escapar |
-| **Chave de API com falha fechada** ([ADR-013](document/decisoes.md)) | Sem chave configurada, nenhuma escrita é aceita: esquecer de configurar não abre porta |
-| **O cadastro da máquina não decide o limite** ([ADR-014](document/decisoes.md)) | Uma tela não pode mudar, sem revisão, o número que chega ao operador |
-| **SQLite e Open-Meteo como fonte única** ([ADR-005](document/decisoes.md), [009](document/decisoes.md)) | Poucas partes móveis: menos coisas para quebrar na demo e menos ambiente para montar |
+| Umidade do solo abaixo de 60% | Ligar a irrigação do talhão |
+| pH abaixo de 6,0 | Aplicar calcário para corrigir a acidez |
+| pH acima de 6,8 | Corrigir com enxofre e revisar a adubação |
+| N, P ou K ausente | Adubar com o nutriente que falta |
 
-O **diagrama consolidado** (entrada → banco → modelo → saída) está em
-[arquitetura.md](document/arquitetura.md#diagrama-final-entrada--banco--modelo--saída).
-
-## 🚀 Como usar
-
-### Em Docker (não precisa instalar nada)
-
-```bash
-cp docker/.env.example .env      # escolha uma chave em AGRISHIELD_API_KEY
-docker compose up --build
-```
-
-Sobem três serviços: front, API e broker MQTT.
-
-| | |
-|---|---|
-| Front-web | http://localhost:8501 |
-| API (documentação interativa) | http://localhost:8000/docs |
-| Broker MQTT | `localhost:1883` |
-
-Os relatórios vêm vazios até carregar a amostra de sinistros reais:
-
-```bash
-docker compose run --rm api python scripts/load_psr.py --sample
-```
-
-O ESP32 não tem container (é simulado), mas conversa com o broker do compose pelo **IP da sua
-máquina na LAN** — como apontar o firmware e os problemas comuns estão em
-[docker/README.md](docker/README.md).
-
-### Sem Docker
-
-Precisa de Python 3.11+ e **[uv](https://docs.astral.sh/uv/)** (ou pip):
-
-```bash
-cp api/.env.example api/.env                 # escolha uma chave em AGRISHIELD_API_KEYS
-cp front-web/.env.example front-web/.env     # AGRISHIELD_API_KEY = uma das chaves acima
-./scripts/run-demo.sh --aquecer              # sobe API + front e aquece o cache
-```
-
-Este é o caminho da **apresentação**: o script confere o ambiente, avisa se as duas chaves não
-combinarem, espera o `/health`, aquece o cache da Open-Meteo e derruba tudo com um Ctrl+C.
-No Windows, use o WSL ou suba as duas partes à mão:
-
-```bash
-cd api        && uv sync && uv run fastapi dev app/main.py     # http://localhost:8000/docs
-cd front-web  && uv sync && uv run streamlit run app.py        # http://localhost:8501
-```
-
-Para rodar a suíte de testes (sem rede: a Open-Meteo e o MQTT são simulados):
-
-```bash
-cd api && uv run pytest ; cd ../front-web && uv run pytest
-```
-
-### O dispositivo (ESP32)
-
-O equipamento é **simulado no Wokwi**, no navegador — não há hardware físico:
-
-- **Simulação pública pronta:** [abrir no Wokwi](https://wokwi.com/projects/476164477397501953)
-- **No VS Code:** abra `iot/`, rode `pio run`, depois `F1` → *Wokwi: Start Simulator*
-
-Passo a passo, circuito e tabela de ângulos: [iot/README.md](iot/README.md).
-
-### As telas
-
-| Tela | O que mostra |
-|---|---|
-| **Mapa de risco** | Relevo da fazenda e a previsão de 7 dias, célula a célula, com o motivo de cada alerta |
-| **Equipamento ao vivo** | Telemetria do ESP32 chegando, limite do dia e alerta de capotamento com o contexto |
-| **Maquinário** | Cadastro das máquinas e vínculo com o dispositivo instalado em cada uma |
-| **Subscrição** | Perfil de terreno da carteira: score 0–100 e classe A/B/C |
-| **Relatórios** | Tendências por equipamento, região e cultura, com exportação em CSV |
-| **Replay de acidentes** | O motor rodando na data e no local de acidentes reais noticiados |
-
-**Mapa de risco — a previsão de 7 dias.** Cada alerta traz a conta que o gerou: *"inclinação de
-16,7° acima do limite de 15° (solo seco: 1,8 mm em 72 h)"*.
-
-![Mapa de risco com a previsão de 7 dias](document/evidencias/prints/mapa-risco-previsao-de-risco.png)
-
-**Relatórios — tendências sobre 1,5 milhão de apólices reais.** Aqui a aba por cultura, com a taxa
-de sinistro e a causa mais frequente de cada uma.
-
-![Relatórios por cultura](document/evidencias/prints/relatorios-cultura.png)
-
-**Subscrição — o terreno na cotação.** Classe A/B/C e score 0–100, com a nota declarando que os
-pesos da v1 ainda **não** foram calibrados com dados de sinistro.
-
-![Perfil de subscrição](document/evidencias/prints/subscricao--sitio-cafe.png)
-
-**Replay — a validação mais honesta do projeto.** O motor rodado na data e no lugar de cinco
-acidentes reais: **2 de 5** teriam alertado no ponto, e os três "não" ficam à vista com o motivo.
-
-![Replay de acidentes reais](document/evidencias/prints/replay-acidente.png)
-
-> Mais capturas, com legenda e descrição, em
-> [`document/AgriShield-documentacao-da-entrega.docx`](document/AgriShield-documentacao-da-entrega.docx)
-> e em [`document/evidencias/prints/`](document/evidencias/prints/).
+- **Desenvolvimento local:** o [`docker-compose.yaml`](docker-compose.yaml) sobe o
+  [floci](https://floci.io/), um emulador local da AWS na porta 4566. Com
+  `AWS_ENDPOINT_URL=http://localhost:4566` no `.env`, o mesmo código boto3 fala com o floci em vez da AWS.
+- **Entrega:** tópico e assinatura de e-mail na AWS real, com prints do console comentados aqui.
 
 ## 📁 Estrutura de pastas
 
-- <b>api</b>: backend **FastAPI** — motor de risco, Open-Meteo, ponte MQTT, SQLite. [api/README.md](api/README.md)
-- <b>front-web</b>: front **Streamlit**, que só exibe dados da API. [front-web/README.md](front-web/README.md)
-- <b>iot</b>: firmware **ESP32** (PlatformIO + Wokwi). [iot/README.md](iot/README.md)
-- <b>document</b>: documentação técnica e decisões — comece pelo [guia do projeto](document/guia-do-projeto.md). [document/README.md](document/README.md)
-- <b>feature</b>: especificação de cada feature, com critérios de aceite. [feature/README.md](feature/README.md)
-- <b>docker</b>: Dockerfiles, broker MQTT e modelo de `.env`. [docker/README.md](docker/README.md)
-- <b>data</b>: amostra versionada do PSR, dataset de treino e brutos fora do Git. [data/README.md](data/README.md)
-- <b>scripts</b>: demo, pipeline de dados, simulador de dispositivo e medições. [scripts/readme.md](scripts/readme.md)
-- <b>.claude</b> · <b>.github</b> · <b>assets</b> · <b>config</b> · <b>CLAUDE.md</b> · <b>LICENSE</b>
+```
+.
+├── README.md             # este arquivo: documentação integrada do sistema
+├── .env.example          # modelo do .env único (Oracle, API, AWS)
+├── docker-compose.yaml   # floci: AWS local para desenvolver o alerta
+├── assets/               # logo da FIAP usado neste README
+├── docs/                 # documentação
+│   ├── plano-entrega/    #   o que falta para a entrega, por frente de trabalho
+│   ├── fases/            #   detalhes de cada fase (fase1.md … fase6.md)
+│   └── imagens/          #   prints e figuras
+├── fase1/                # Python (área e insumos) + R (estatística e clima)
+│   └── src/              #   main.py, cálculos, CSV e Rscripts/
+├── fase2/                # ESP32 de irrigação (Wokwi) + Python (clima) + R (regressão)
+│   ├── src/              #   farmTech.ino, main.py, irrigacao.r
+│   └── diagram.json      #   circuito do Wokwi
+├── fase3/                # Oracle: create_table.sql, insert_dados.sql, consulta.sql
+│   └── dashboard/        #   Streamlit que lê o Oracle + página de ML
+├── fase4/                # sistema da Fase 4
+│   ├── src/              #   api.py (FastAPI), app.py (Streamlit), core/ml_pipeline.py
+│   └── iot/              #   ESP32 que envia as leituras para a API
+├── fase5/                # notebook de rendimento de safra + crop_yield.csv
+└── fase6/                # YOLO
+    ├── src/              #   notebook de treino e comparação
+    └── models/best.pt    #   pesos treinados (trator e vaca, YOLOv5s, 30 épocas)
+```
 
-## ⚠️ O que este projeto não é
+## 🔧 Como executar
 
-Declarado para não gerar expectativa errada:
+### Pré-requisitos
 
-- **Não há hardware embarcado real.** O ESP32 é simulado no Wokwi.
-- **O modelo estima sinistro de seguro agrícola** (perda de lavoura), não acidente de máquina — é a
-  base pública que existe. Calibrar com a base de sinistros de máquinas da Sompo é o roadmap.
-- **Não é ambiente de produção.** A demo usa broker MQTT público e leituras sem autenticação; o que
-  produção exigiria está em [contrato-mqtt.md](document/contrato-mqtt.md) e
-  [backlog-pos-entrega.md](document/backlog-pos-entrega.md).
-- **Nenhum dado pessoal** entra no banco ou no repositório: nomes e documentos do CSV público são
-  descartados na leitura, com teste que falha se algo escapar.
+- [uv](https://docs.astral.sh/uv/) (cada fase tem o seu ambiente; o uv baixa a versão de Python certa)
+- R 4.2+ (Fases 1 e 2)
+- VS Code com as extensões PlatformIO e Wokwi (ESP32 das Fases 2 e 4)
+- Acesso à internet (Oracle da FIAP e Open-Meteo)
+- Docker, só para testar o alerta localmente com o floci
 
-## 📈 Evolução ao longo das 4 sprints
+### 1. Configurar o `.env` único
 
-| Sprint | O que foi entregue |
+```bash
+cp .env.example .env    # preencha ORACLE_USER e ORACLE_PASSWORD
+```
+
+Um `.env` na raiz serve para todas as fases: o `load_dotenv()` de cada script sobe as pastas até
+encontrá-lo.
+
+### 2. Rodar cada fase
+
+| Fase | Comando |
 |---|---|
-| **1** | **Monitoramento de risco para plantações a partir de dados climáticos**, consumindo API meteorológica — a primeira versão da ideia de cruzar clima com risco agrícola |
-| **2** | **Front-end conectado a essa API** — a primeira interface do produto, com o risco climático saindo do código e virando tela |
-| **3** | **Conexão com IoT.** Essa implementação **foi descontinuada** e não faz parte do sistema atual: a camada de dispositivo foi refeita do zero na Sprint 4 |
-| **4** | Sistema completo: plataforma, dispositivo, dados e modelo, integração, segurança e documentação |
+| 1 — cálculo de área e insumos | `cd fase1/src && uv run main.py` |
+| 1 — estatística em R | `cd fase1/src && Rscript Rscripts/python-consumer.r` |
+| 2 — previsão do tempo para o ESP32 | `cd fase2 && uv run python src/main.py` |
+| 2 — regressão logística em R | `cd fase2 && Rscript src/irrigacao.r` |
+| 2 — ESP32 de irrigação | abrir `fase2/` no VS Code e iniciar a simulação do Wokwi |
+| 3 — dashboard do Oracle | `cd fase3/dashboard && uv run streamlit run app.py --server.port 8502` |
+| 3 — scripts SQL | rodar `fase3/create_table.sql`, `insert_dados.sql` e `consulta.sql` no Oracle SQL Developer |
+| 4 — API | `cd fase4/src && uv run uvicorn api:app --port 8000` |
+| 4 — dashboard | `cd fase4/src && uv run streamlit run app.py` |
+| 4 — ESP32 de solo | abrir `fase4/iot/` no VS Code e iniciar a simulação do Wokwi (envia para a API na porta 8000) |
+| 5 — notebook | `cd fase5 && python -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt && jupyter lab pbl_fase5.ipynb` |
+| 6 — notebook do YOLO | `cd fase6 && uv sync && uv run jupyter lab` (ou abrir no Google Colab) |
+| Alerta (local) | `docker compose up -d` (floci na porta 4566) |
 
-### O arco: as três camadas se somaram, e a quarta virou o produto
+## 🎬 Vídeo demonstrativo
 
-Cada sprint acrescentou uma camada, e a última mudou **o que se cruza com o clima**:
+O link do vídeo (YouTube, não listado, até 10 minutos) será adicionado aqui.
 
-1. **Sprint 1 — o clima.** Ler previsão de uma API e transformar em risco agrícola. É a espinha
-   dorsal que continua até hoje, agora pela Open-Meteo.
-2. **Sprint 2 — a tela.** O risco deixou de ser saída de código e virou interface. O front atual,
-   em Streamlit, herda esse papel e a mesma regra: ele **só exibe** o que a API calculou.
-3. **Sprint 3 — o dispositivo.** A primeira tentativa de levar o sistema ao equipamento. Ela não
-   sobreviveu: a camada IoT foi **refeita** na Sprint 4 sobre **ESP32 + MQTT simulado no Wokwi**
-   ([ADR-003](document/decisoes.md)), que é o que está no ar. O aprendizado ficou; o código, não.
-4. **Sprint 4 — o relevo, e o destinatário.** A virada decisiva foi cruzar o clima com o **relevo**
-   — o fator que a Sompo apontou como ausente nos outros projetos — e entregar o resultado ao
-   **operador da máquina**, na forma de um limite de inclinação que chega ao equipamento.
+## 🗃 Histórico de lançamentos
 
-Em uma frase: **o projeto começou perguntando "que risco o clima traz para a lavoura?" e terminou
-perguntando "este terreno, hoje, é seguro para esta máquina?"**.
-
-As duas decisões que explicam a virada estão registradas em
-[decisoes.md](document/decisoes.md): a **ADR-001**, que trocou o MVP amplo do Passaporte Digital
-pelo foco em relevo × clima, e a **ADR-002**, que cortou app mobile, BLE e fraude para caber no
-prazo.
-
-**Estado feature a feature, correções de rota e o que ainda falta:**
-[feature/README.md](feature/README.md) · [document/entregaveis.md](document/entregaveis.md) ·
-[document/evidencias/](document/evidencias/).
-
-## 🎬 Vídeo da entrega
-
-Até 5 minutos, com narração humana, publicado no YouTube como **não listado**.
-
-**▶️ https://youtu.be/5-dttjN-_oI**
-
-Roteiro e decisões de gravação: [roteiro-video.md](document/roteiro-video.md). 
-Para gravar o vídeo da entrega, use também o roteiro pronto em [VIDEO_ROTEIRO.txt](VIDEO_ROTEIRO.txt).
-
-## ✅ Checklist final da entrega
-
-Antes de enviar no Portal do Aluno, confirme os itens abaixo:
-
-### Modelo do arquivo de entrega (`ENTREGA.txt`)
-
-Use o arquivo [ENTREGA.txt](ENTREGA.txt) como base para o envio. Ele já contém o formato correto com:
-
-- link do repositório GitHub privado
-- link do vídeo demonstrativo
-
-Edite os campos com os links finais antes do envio.
-
-
-- [ ] Repositório GitHub privado está acessível para `fiap-tutoria`.
-- [ ] O README contém o nome completo dos integrantes e RM completos.
-- [ ] O README contém o link do vídeo demonstrativo publicado como **não listado**.
-- [ ] O vídeo tem até 10 minutos e mostra fluxo completo: dashboard, API, dados e dispositivo.
-- [ ] O arquivo `.txt` enviado na plataforma contém apenas:
-  - link do repositório GitHub privado
-  - link do vídeo demonstrativo
-- [ ] O projeto foi validado em ambiente local com `docker compose up --build` ou `uv run ...`.
-- [ ] A documentação e o código estão organizados em subpastas por serviço/fase.
-- [ ] Os prints e evidências estão no diretório [document/evidencias/](document/evidencias/).
-- [ ] O `.env` e os dados sensíveis não foram commitados no repositório público.
-
-## ⚠️ O que ainda precisa melhorar antes da entrega final
-
-O projeto já está bem estruturado, mas os pontos mais importantes para revisar antes do envio são:
-
-1. **Validação final do ambiente local**
-   - Rodar a API, front e simulação do dispositivo em um ambiente real.
-   - Garantir que os passos de setup funcionam sem erro.
-
-2. **Link real do GitHub privado e do vídeo**
-   - O README e o arquivo `.txt` precisam refletir os links definitivos da entrega.
-   - Não deixar placeholders para o professor/coordenação.
-
-3. **Checar o README para o formato acadêmico**
-   - Nome completo + RM em ordem correta.
-   - Descrição final do sistema, objetivos e funcionamento claros.
-   - Vídeo e documentação claramente vinculados.
-
-4. **Testes e evidências finais**
-   - Validar a execução da API e do front em um ambiente sem bloqueios de rede.
-   - Confirmar se os relatórios e as telas abrem corretamente.
-
-5. **Conformidade com o enunciado**
-   - Garantir que a estrutura das pastas, os prints e o README seguem o que foi pedido pela disciplina.
-   - Confirmar que o repositório está privado e com acesso correto.
+* 0.1.0 — 08/11/2026: Fases 1 a 6 reunidas em pasta única e saneadas, `.env` único na raiz,
+  documentação centralizada em `docs/` (fases e plano de entrega) e README integrado.
 
 ## 📋 Licença
 
-Este projeto está licenciado sob a **Licença MIT**. Veja o arquivo [LICENSE](LICENSE).
-
-O modelo deste README é baseado no <a href="https://github.com/agodoi/template">MODELO GIT FIAP</a>, da <a href="https://fiap.com.br">Fiap</a>, licenciado sob <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer">Attribution 4.0 International</a>.
+<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"><p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://github.com/fiap-tutoria/FIAP-PORTFOLIO-AI">TEMPLATE - FIAP PORTFÓLIO AI</a> por <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://fiap.com.br">FIAP</a> está licenciado sobre <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Attribution 4.0 International</a>.</p>
