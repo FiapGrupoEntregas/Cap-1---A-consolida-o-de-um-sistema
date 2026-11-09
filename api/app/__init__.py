@@ -1,1 +1,0 @@
-"""API do Sompo AgriShield."""
