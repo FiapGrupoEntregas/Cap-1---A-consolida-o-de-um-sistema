@@ -21,14 +21,14 @@ pasta traz o objetivo, as tarefas, as decisões e o critério de pronto da sua f
 
 | # | Critério | Peso | Frente | Situação |
 |---|---|---|---|---|
-| 5 | Sistema integrado e dashboard | 3,0 | [01](01-fase6-deteccao.md), [02](02-cli-main.md), [03](03-dashboard-central.md) | ⬜ falta disparar os serviços |
-| 6 | Alertas na AWS | 3,0 | [04](04-alerta-aws.md) | ⬜ não iniciado |
+| 5 | Sistema integrado e dashboard | 3,0 | [01](01-fase6-deteccao.md), [02](02-cli-main.md), [03](03-dashboard-central.md) | ✅ 01, 02 e 03 prontas: detecção, `main.py` e Central de serviços na dashboard |
+| 6 | Alertas na AWS | 3,0 | [04](04-alerta-aws.md) | 🟨 serviço pronto e testado no floci; falta publicar na AWS real e tirar os prints |
 | 2 | README | 1,0 | [05](05-documentacao-video-entrega.md) | 🟨 estruturado; faltam AWS, nomes completos e vídeo |
 | 3 | Organização e boas práticas | 1,0 | todas | 🟨 pastas saneadas; falta o código novo |
 | 4 | Vídeo | 1,0 | [05](05-documentacao-video-entrega.md) | ⬜ |
 | 1 | Entrega, repositório e prazo | 1,0 | [05](05-documentacao-video-entrega.md) | ⬜ |
 | 7 | Equipe de 4 a 5 integrantes | +1,0 | [05](05-documentacao-video-entrega.md) | conferir a lista final de integrantes |
-| — | Ir Além 1 e 2 | opcional | [06](06-ir-alem.md) | ⬜ |
+| — | Ir Além 1 e 2 | opcional | [06](06-ir-alem.md) | 🟨 Ir Além 2 pronto (falta o vídeo); Ir Além 1 depende da AWS |
 
 ## Já feito (08/11/2026)
 
@@ -40,6 +40,14 @@ pasta traz o objetivo, as tarefas, as decisões e o critério de pronto da sua f
 - [x] Conexão com o Oracle da FIAP testada: `SENSOR_DADOS` (Fase 3) e `SOIL_DATA` (Fase 4) existem.
 - [x] `fase6/models/best.pt` recuperado do Google Drive e conferido (classes trator e vaca).
 - [x] README da raiz estruturado como documentação integrada.
+- [x] **Frente 01 concluída:** `fase6/src/detect.py` detecta trator e vaca a partir do `best.pt`,
+      com amostras em `fase6/data/amostras/` e ambiente leve (PyTorch para CPU).
+- [x] **Frente 02 concluída:** `main.py` na raiz dispara os 12 serviços pelo terminal;
+      `fase1/src/calculo.py` (Fase 1 sem perguntas) e `fase3/consultas.py` (SQL da Fase 3 no terminal).
+- [x] **Frente 03 concluída:** dashboard central (`fase4/src/app.py`) com Início, Análise de solo e
+      Central de serviços; cada fase dispara por botão via `main.py`.
+- [x] **Frente 04, parte local:** `alerta/` com regras testadas, publicação no SNS (boto3), controle de
+      repetição, botão na dashboard e floci preparado. Falta só a AWS real (passo a passo na frente 04).
 
 ## Ordem de execução
 
@@ -53,17 +61,17 @@ flowchart LR
     E -.-> F["06 · Ir Além<br/>(opcional)"]
 ```
 
-1. **[01 — Detecção com o YOLO](01-fase6-deteccao.md):** único bloqueio da Fase 6; o resto depende dele.
-2. **[04 — Alerta na AWS](04-alerta-aws.md):** pode andar em paralelo; começar cedo porque a
-   conta da AWS e a confirmação do e-mail tomam tempo.
-3. **[02 — Comandos de terminal (`main.py`)](02-cli-main.md):** fonte única de "como disparar cada serviço".
-4. **[03 — Central de serviços na dashboard](03-dashboard-central.md):** botões que chamam o `main.py`.
+1. **[01 — Detecção com o YOLO](01-fase6-deteccao.md):** ✅ feita em 08/11/2026.
+2. **[04 — Alerta na AWS](04-alerta-aws.md):** 🟨 código e floci prontos em 08/11/2026; falta a
+   AWS real (conta do aluno), com passo a passo no arquivo.
+3. **[02 — Comandos de terminal (`main.py`)](02-cli-main.md):** ✅ feita em 08/11/2026.
+4. **[03 — Central de serviços na dashboard](03-dashboard-central.md):** ✅ feita em 08/11/2026.
 5. **[05 — Documentação, vídeo e entrega](05-documentacao-video-entrega.md):** fecha a entrega.
-6. **[06 — Ir Além](06-ir-alem.md):** só se sobrar tempo.
+6. **[06 — Ir Além](06-ir-alem.md):** Ir Além 2 feito em 09/11/2026; Ir Além 1 só com a conta AWS.
 
 ## Definição de pronto da entrega
 
-- [ ] Cada serviço das Fases 1, 2, 3 e 6 dispara por um botão **e** por um comando do `main.py`.
+- [x] Cada serviço das Fases 1, 2, 3 e 6 dispara por um botão **e** por um comando do `main.py`.
 - [ ] Um e-mail de alerta real, com problema e ação corretiva, chega a partir de uma leitura de sensor.
 - [ ] Prints do console da AWS em `docs/imagens/aws/`, comentados no README.
 - [ ] README com nomes completos, RMs, instruções que funcionam num clone novo e link do vídeo.

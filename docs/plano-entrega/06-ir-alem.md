@@ -1,22 +1,35 @@
 # 06 — Ir Além (opcional)
 
-**Situação:** ⬜ · Fazer só depois que as frentes [01](01-fase6-deteccao.md) a [05](05-documentacao-video-entrega.md) estiverem prontas.
+**Situação:** 🟨 Ir Além 2 pronto (falta o vídeo); Ir Além 1 com código e documentação prontos, falta rodar na AWS (ver [cronograma](cronograma-aws.md)).
 
 Os dois desafios vão na pasta `IR-ALEM/` do mesmo repositório, cada um com um vídeo de até
 4 minutos (não listado) cujo link entra no `.txt` e no README.
 
 ## Ir Além 1 — AWS Rekognition
 
-- [ ] Configurar o reconhecimento de imagens no Rekognition até onde a conta permitir (o serviço
-      é pago; não é obrigatório gastar).
-- [ ] Prints de cada etapa da configuração, com os campos explicados.
-- [ ] Figura autoral da arquitetura e justificativa crítica da solução.
-- [ ] Código comentado, se houver.
+- [x] Código: `IR-ALEM/ir-alem-1/rekognition.py` (DetectLabels em cada foto, JSON, imagem anotada,
+      `--comparar` com o YOLO da Fase 6 → `resultados/comparacao.md`), `main.py ir-alem-1`. Testado no
+      floci (chamada válida; rótulos falsos, por isso `resultados/` fica vazio até a execução real).
+- [x] Figura autoral da arquitetura e justificativa crítica em `IR-ALEM/README.md`.
+- [x] Rodado na AWS real em 10/11/2026: 4/4 classes nos dois; Rekognition 81–99,9 %, YOLO 60–84 %;
+      Rekognition sem caixa no trator. `resultados/` pronta para commitar.
+- [ ] Prints em `IR-ALEM/ir-alem-1/prints/` (lista e campos explicados em `IR-ALEM/README.md`).
+- [ ] Vídeo de até 4 min (não listado).
 
 ## Ir Além 2 — Algoritmo genético
 
-- [ ] Notebook com um problema de otimização agrícola (ex.: mochila binária de insumos ou água
-      com dados da FarmTech, como as culturas e insumos da Fase 1).
-- [ ] Entrada salva em arquivo e lida pelo notebook (reprodutibilidade).
-- [ ] Variações de `selection()`, `crossover()` ou `mutation()` comparadas em tempo e qualidade.
-- [ ] Documentação das escolhas de parâmetros, figura autoral e imagens dos resultados.
+- [x] Notebook `IR-ALEM/ir-alem-2/ir_alem_2_algoritmo_genetico.ipynb`: mochila binária de intervenções
+      (irrigar, calagem, enxofre, adubar N/P/K) por talhão com orçamento de 35 % do custo, montada das
+      leituras reais de `SOIL_DATA` (Fase 4) e das regras do alerta.
+- [x] Entrada em `dados/talhoes.csv` (gerada por `gerar_dados.py` com semente fixa); o notebook só lê o arquivo.
+- [x] 2 variantes de cada operador (torneio/roleta, um ponto/uniforme, bit-flip/troca) = 8 configurações ×
+      10 sementes, comparadas em aptidão e tempo; validação com força bruta (18 itens) e heurística gulosa.
+- [x] Tabela de parâmetros com justificativa, figura autoral da arquitetura (`figuras/01-arquitetura.png`)
+      e 4 figuras de resultados. Resumo em `IR-ALEM/README.md`.
+- [ ] Vídeo de até 4 min (não listado): problema → dados → AG → comparação → plano final.
+
+**Nota sobre o Ir Além 1:** o Rekognition do floci devolve um rótulo falso ("Floci", 99,9 %) para qualquer
+imagem e não implementa coleções, então não serve de evidência. Na AWS real o `DetectLabels` custa
+US$ 0,001 por imagem (sem cota permanente); analisar as amostras da Fase 6 custa centavos. Se for feito,
+aproveitar a sessão da frente [04](04-alerta-aws.md): mesma conta, orçamento e usuário IAM (acrescentar
+`rekognition:DetectLabels`).

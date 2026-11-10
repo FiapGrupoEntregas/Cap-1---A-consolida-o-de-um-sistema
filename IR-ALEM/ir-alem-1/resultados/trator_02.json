@@ -1,0 +1,512 @@
+{
+  "imagem": "/home/ntl/workspace/Cap-1---A-consolida-o-de-um-sistema/fase6/data/amostras/trator_02.jpg",
+  "quando": "2026-11-10T00:52:11",
+  "parametros": {
+    "MaxLabels": 15,
+    "MinConfidence": 50.0
+  },
+  "rotulos": [
+    {
+      "nome": "Wheel",
+      "confianca": 96.54,
+      "pais": [
+        "Machine"
+      ],
+      "caixas": [
+        {
+          "width": 0.3055,
+          "height": 0.3164,
+          "left": 0.0592,
+          "top": 0.6278,
+          "confianca": 96.54
+        }
+      ]
+    },
+    {
+      "nome": "Adult",
+      "confianca": 85.77,
+      "pais": [
+        "Person"
+      ],
+      "caixas": [
+        {
+          "width": 0.3099,
+          "height": 0.1433,
+          "left": 0.405,
+          "top": 0.3814,
+          "confianca": 85.77
+        }
+      ]
+    },
+    {
+      "nome": "Male",
+      "confianca": 85.77,
+      "pais": [
+        "Person"
+      ],
+      "caixas": [
+        {
+          "width": 0.3099,
+          "height": 0.1433,
+          "left": 0.405,
+          "top": 0.3814,
+          "confianca": 85.77
+        }
+      ]
+    },
+    {
+      "nome": "Man",
+      "confianca": 85.77,
+      "pais": [
+        "Adult",
+        "Male",
+        "Person"
+      ],
+      "caixas": [
+        {
+          "width": 0.3099,
+          "height": 0.1433,
+          "left": 0.405,
+          "top": 0.3814,
+          "confianca": 85.77
+        }
+      ]
+    },
+    {
+      "nome": "Person",
+      "confianca": 85.77,
+      "pais": [],
+      "caixas": [
+        {
+          "width": 0.3099,
+          "height": 0.1433,
+          "left": 0.405,
+          "top": 0.3814,
+          "confianca": 85.77
+        }
+      ]
+    },
+    {
+      "nome": "Bulldozer",
+      "confianca": 81.22,
+      "pais": [
+        "Machine"
+      ],
+      "caixas": [
+        {
+          "width": 0.8904,
+          "height": 0.7099,
+          "left": 0.0501,
+          "top": 0.2876,
+          "confianca": 81.22
+        }
+      ]
+    },
+    {
+      "nome": "Tire",
+      "confianca": 71.79,
+      "pais": [],
+      "caixas": []
+    },
+    {
+      "nome": "Corrosion",
+      "confianca": 71.15,
+      "pais": [],
+      "caixas": []
+    },
+    {
+      "nome": "Gun",
+      "confianca": 70.51,
+      "pais": [
+        "Weapon"
+      ],
+      "caixas": [
+        {
+          "width": 0.1013,
+          "height": 0.382,
+          "left": 0.6078,
+          "top": 0.6178,
+          "confianca": 70.51
+        }
+      ]
+    },
+    {
+      "nome": "Rust",
+      "confianca": 69.7,
+      "pais": [
+        "Corrosion"
+      ],
+      "caixas": []
+    },
+    {
+      "nome": "Vehicle",
+      "confianca": 67.65,
+      "pais": [
+        "Transportation"
+      ],
+      "caixas": []
+    },
+    {
+      "nome": "Head",
+      "confianca": 61.35,
+      "pais": [
+        "Person"
+      ],
+      "caixas": []
+    },
+    {
+      "nome": "Car",
+      "confianca": 56.45,
+      "pais": [
+        "Transportation",
+        "Vehicle"
+      ],
+      "caixas": []
+    },
+    {
+      "nome": "Tractor",
+      "confianca": 55.41,
+      "pais": [
+        "Transportation",
+        "Vehicle"
+      ],
+      "caixas": []
+    },
+    {
+      "nome": "Outdoors",
+      "confianca": 55.19,
+      "pais": [],
+      "caixas": []
+    }
+  ],
+  "resposta_bruta": {
+    "Labels": [
+      {
+        "Name": "Wheel",
+        "Confidence": 96.53501892089844,
+        "Instances": [
+          {
+            "BoundingBox": {
+              "Width": 0.30552250146865845,
+              "Height": 0.31643518805503845,
+              "Left": 0.059213411062955856,
+              "Top": 0.6277947425842285
+            },
+            "Confidence": 96.53501892089844
+          }
+        ],
+        "Parents": [
+          {
+            "Name": "Machine"
+          }
+        ],
+        "Aliases": [],
+        "Categories": [
+          {
+            "Name": "Vehicles and Automotive"
+          }
+        ]
+      },
+      {
+        "Name": "Adult",
+        "Confidence": 85.77458953857422,
+        "Instances": [
+          {
+            "BoundingBox": {
+              "Width": 0.3099451959133148,
+              "Height": 0.1433207392692566,
+              "Left": 0.4049997627735138,
+              "Top": 0.3813548684120178
+            },
+            "Confidence": 85.77458953857422
+          }
+        ],
+        "Parents": [
+          {
+            "Name": "Person"
+          }
+        ],
+        "Aliases": [],
+        "Categories": [
+          {
+            "Name": "Person Description"
+          }
+        ]
+      },
+      {
+        "Name": "Male",
+        "Confidence": 85.77458953857422,
+        "Instances": [
+          {
+            "BoundingBox": {
+              "Width": 0.3099451959133148,
+              "Height": 0.1433207392692566,
+              "Left": 0.4049997627735138,
+              "Top": 0.3813548684120178
+            },
+            "Confidence": 85.77458953857422
+          }
+        ],
+        "Parents": [
+          {
+            "Name": "Person"
+          }
+        ],
+        "Aliases": [],
+        "Categories": [
+          {
+            "Name": "Person Description"
+          }
+        ]
+      },
+      {
+        "Name": "Man",
+        "Confidence": 85.77458953857422,
+        "Instances": [
+          {
+            "BoundingBox": {
+              "Width": 0.3099451959133148,
+              "Height": 0.1433207392692566,
+              "Left": 0.4049997627735138,
+              "Top": 0.3813548684120178
+            },
+            "Confidence": 85.77458953857422
+          }
+        ],
+        "Parents": [
+          {
+            "Name": "Adult"
+          },
+          {
+            "Name": "Male"
+          },
+          {
+            "Name": "Person"
+          }
+        ],
+        "Aliases": [],
+        "Categories": [
+          {
+            "Name": "Person Description"
+          }
+        ]
+      },
+      {
+        "Name": "Person",
+        "Confidence": 85.77458953857422,
+        "Instances": [
+          {
+            "BoundingBox": {
+              "Width": 0.3099451959133148,
+              "Height": 0.1433207392692566,
+              "Left": 0.4049997627735138,
+              "Top": 0.3813548684120178
+            },
+            "Confidence": 85.77458953857422
+          }
+        ],
+        "Parents": [],
+        "Aliases": [
+          {
+            "Name": "Human"
+          }
+        ],
+        "Categories": [
+          {
+            "Name": "Person Description"
+          }
+        ]
+      },
+      {
+        "Name": "Bulldozer",
+        "Confidence": 81.22409057617188,
+        "Instances": [
+          {
+            "BoundingBox": {
+              "Width": 0.8903545141220093,
+              "Height": 0.7099234461784363,
+              "Left": 0.05006202682852745,
+              "Top": 0.28761348128318787
+            },
+            "Confidence": 81.22409057617188
+          }
+        ],
+        "Parents": [
+          {
+            "Name": "Machine"
+          }
+        ],
+        "Aliases": [],
+        "Categories": [
+          {
+            "Name": "Tools and Machinery"
+          }
+        ]
+      },
+      {
+        "Name": "Tire",
+        "Confidence": 71.7855224609375,
+        "Instances": [],
+        "Parents": [],
+        "Aliases": [],
+        "Categories": [
+          {
+            "Name": "Vehicles and Automotive"
+          }
+        ]
+      },
+      {
+        "Name": "Corrosion",
+        "Confidence": 71.15452575683594,
+        "Instances": [],
+        "Parents": [],
+        "Aliases": [],
+        "Categories": [
+          {
+            "Name": "Damage Detection"
+          }
+        ]
+      },
+      {
+        "Name": "Gun",
+        "Confidence": 70.51103973388672,
+        "Instances": [
+          {
+            "BoundingBox": {
+              "Width": 0.10133927315473557,
+              "Height": 0.3820185363292694,
+              "Left": 0.6078142523765564,
+              "Top": 0.6177679896354675
+            },
+            "Confidence": 70.51103973388672
+          }
+        ],
+        "Parents": [
+          {
+            "Name": "Weapon"
+          }
+        ],
+        "Aliases": [],
+        "Categories": [
+          {
+            "Name": "Weapons and Military"
+          }
+        ]
+      },
+      {
+        "Name": "Rust",
+        "Confidence": 69.69953918457031,
+        "Instances": [],
+        "Parents": [
+          {
+            "Name": "Corrosion"
+          }
+        ],
+        "Aliases": [],
+        "Categories": [
+          {
+            "Name": "Damage Detection"
+          }
+        ]
+      },
+      {
+        "Name": "Vehicle",
+        "Confidence": 67.64755249023438,
+        "Instances": [],
+        "Parents": [
+          {
+            "Name": "Transportation"
+          }
+        ],
+        "Aliases": [],
+        "Categories": [
+          {
+            "Name": "Vehicles and Automotive"
+          }
+        ]
+      },
+      {
+        "Name": "Head",
+        "Confidence": 61.35476303100586,
+        "Instances": [],
+        "Parents": [
+          {
+            "Name": "Person"
+          }
+        ],
+        "Aliases": [],
+        "Categories": [
+          {
+            "Name": "Person Description"
+          }
+        ]
+      },
+      {
+        "Name": "Car",
+        "Confidence": 56.45465850830078,
+        "Instances": [],
+        "Parents": [
+          {
+            "Name": "Transportation"
+          },
+          {
+            "Name": "Vehicle"
+          }
+        ],
+        "Aliases": [
+          {
+            "Name": "Automobile"
+          }
+        ],
+        "Categories": [
+          {
+            "Name": "Vehicles and Automotive"
+          }
+        ]
+      },
+      {
+        "Name": "Tractor",
+        "Confidence": 55.40654754638672,
+        "Instances": [],
+        "Parents": [
+          {
+            "Name": "Transportation"
+          },
+          {
+            "Name": "Vehicle"
+          }
+        ],
+        "Aliases": [],
+        "Categories": [
+          {
+            "Name": "Vehicles and Automotive"
+          }
+        ]
+      },
+      {
+        "Name": "Outdoors",
+        "Confidence": 55.18500900268555,
+        "Instances": [],
+        "Parents": [],
+        "Aliases": [],
+        "Categories": [
+          {
+            "Name": "Nature and Outdoors"
+          }
+        ]
+      }
+    ],
+    "LabelModelVersion": "3.0",
+    "ResponseMetadata": {
+      "RequestId": "7e5745a0-805e-40a0-b4af-128f6efe67c8",
+      "HTTPStatusCode": 200,
+      "HTTPHeaders": {
+        "x-amzn-requestid": "7e5745a0-805e-40a0-b4af-128f6efe67c8",
+        "content-type": "application/x-amz-json-1.1",
+        "content-length": "3487",
+        "date": "Tue, 10 Nov 2026 03:52:11 GMT"
+      },
+      "RetryAttempts": 0
+    }
+  }
+}

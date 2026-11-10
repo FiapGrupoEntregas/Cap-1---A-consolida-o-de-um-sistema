@@ -41,3 +41,6 @@ desktop.ini
 .idea/
 *.swp
 *~
+
+# Imagens anotadas geradas pelo src/detect.py
+saidas/

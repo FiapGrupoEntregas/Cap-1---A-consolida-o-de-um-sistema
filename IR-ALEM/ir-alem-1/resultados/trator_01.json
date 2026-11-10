@@ -1,0 +1,646 @@
+{
+  "imagem": "/home/ntl/workspace/Cap-1---A-consolida-o-de-um-sistema/fase6/data/amostras/trator_01.jpg",
+  "quando": "2026-11-10T00:52:04",
+  "parametros": {
+    "MaxLabels": 15,
+    "MinConfidence": 50.0
+  },
+  "rotulos": [
+    {
+      "nome": "Soil",
+      "confianca": 100.0,
+      "pais": [],
+      "caixas": []
+    },
+    {
+      "nome": "Wheel",
+      "confianca": 98.55,
+      "pais": [
+        "Machine"
+      ],
+      "caixas": [
+        {
+          "width": 0.0736,
+          "height": 0.1586,
+          "left": 0.7248,
+          "top": 0.6654,
+          "confianca": 98.55
+        },
+        {
+          "width": 0.0655,
+          "height": 0.1195,
+          "left": 0.378,
+          "top": 0.6951,
+          "confianca": 97.72
+        },
+        {
+          "width": 0.0754,
+          "height": 0.2085,
+          "left": 0.4756,
+          "top": 0.6194,
+          "confianca": 97.66
+        },
+        {
+          "width": 0.0798,
+          "height": 0.1718,
+          "left": 0.5373,
+          "top": 0.6614,
+          "confianca": 96.82
+        },
+        {
+          "width": 0.0756,
+          "height": 0.0554,
+          "left": 0.651,
+          "top": 0.7664,
+          "confianca": 86.23
+        }
+      ]
+    },
+    {
+      "nome": "Outdoors",
+      "confianca": 93.86,
+      "pais": [],
+      "caixas": []
+    },
+    {
+      "nome": "Person",
+      "confianca": 93.61,
+      "pais": [],
+      "caixas": [
+        {
+          "width": 0.0571,
+          "height": 0.0786,
+          "left": 0.5849,
+          "top": 0.5253,
+          "confianca": 93.61
+        }
+      ]
+    },
+    {
+      "nome": "Nature",
+      "confianca": 93.46,
+      "pais": [
+        "Outdoors"
+      ],
+      "caixas": []
+    },
+    {
+      "nome": "Bird",
+      "confianca": 91.36,
+      "pais": [
+        "Animal"
+      ],
+      "caixas": [
+        {
+          "width": 0.0229,
+          "height": 0.0258,
+          "left": 0.9287,
+          "top": 0.685,
+          "confianca": 91.36
+        },
+        {
+          "width": 0.0201,
+          "height": 0.0178,
+          "left": 0.9275,
+          "top": 0.7114,
+          "confianca": 83.68
+        },
+        {
+          "width": 0.0316,
+          "height": 0.0381,
+          "left": 0.8658,
+          "top": 0.6858,
+          "confianca": 83.1
+        },
+        {
+          "width": 0.0137,
+          "height": 0.0183,
+          "left": 0.3357,
+          "top": 0.6664,
+          "confianca": 71.85
+        },
+        {
+          "width": 0.0134,
+          "height": 0.02,
+          "left": 0.8449,
+          "top": 0.7087,
+          "confianca": 71.84
+        },
+        {
+          "width": 0.0126,
+          "height": 0.0166,
+          "left": 0.1249,
+          "top": 0.659,
+          "confianca": 70.21
+        },
+        {
+          "width": 0.0168,
+          "height": 0.0132,
+          "left": 0.2707,
+          "top": 0.6619,
+          "confianca": 66.53
+        },
+        {
+          "width": 0.0131,
+          "height": 0.0199,
+          "left": 0.1756,
+          "top": 0.6592,
+          "confianca": 61.54
+        },
+        {
+          "width": 0.0133,
+          "height": 0.0163,
+          "left": 0.2552,
+          "top": 0.6678,
+          "confianca": 60.81
+        }
+      ]
+    },
+    {
+      "nome": "Tractor",
+      "confianca": 90.5,
+      "pais": [
+        "Transportation",
+        "Vehicle"
+      ],
+      "caixas": []
+    },
+    {
+      "nome": "Vehicle",
+      "confianca": 90.5,
+      "pais": [
+        "Transportation"
+      ],
+      "caixas": []
+    },
+    {
+      "nome": "Adventure",
+      "confianca": 66.01,
+      "pais": [
+        "Leisure Activities"
+      ],
+      "caixas": []
+    },
+    {
+      "nome": "Countryside",
+      "confianca": 57.89,
+      "pais": [
+        "Nature",
+        "Outdoors"
+      ],
+      "caixas": []
+    },
+    {
+      "nome": "Field",
+      "confianca": 57.59,
+      "pais": [],
+      "caixas": []
+    },
+    {
+      "nome": "Offroad",
+      "confianca": 56.69,
+      "pais": [
+        "Adventure",
+        "Leisure Activities",
+        "Transportation",
+        "Vehicle"
+      ],
+      "caixas": []
+    },
+    {
+      "nome": "Agriculture",
+      "confianca": 56.11,
+      "pais": [
+        "Countryside",
+        "Field",
+        "Nature",
+        "Outdoors"
+      ],
+      "caixas": []
+    },
+    {
+      "nome": "Tire",
+      "confianca": 56.08,
+      "pais": [],
+      "caixas": []
+    },
+    {
+      "nome": "Rural",
+      "confianca": 55.36,
+      "pais": [
+        "Countryside",
+        "Nature",
+        "Outdoors"
+      ],
+      "caixas": []
+    }
+  ],
+  "resposta_bruta": {
+    "Labels": [
+      {
+        "Name": "Soil",
+        "Confidence": 99.99996185302734,
+        "Instances": [],
+        "Parents": [],
+        "Aliases": [],
+        "Categories": [
+          {
+            "Name": "Nature and Outdoors"
+          }
+        ]
+      },
+      {
+        "Name": "Wheel",
+        "Confidence": 98.54644012451172,
+        "Instances": [
+          {
+            "BoundingBox": {
+              "Width": 0.07357794791460037,
+              "Height": 0.1585647612810135,
+              "Left": 0.7247764468193054,
+              "Top": 0.6653645634651184
+            },
+            "Confidence": 98.54644012451172
+          },
+          {
+            "BoundingBox": {
+              "Width": 0.06550951302051544,
+              "Height": 0.11946137994527817,
+              "Left": 0.3780488669872284,
+              "Top": 0.695107102394104
+            },
+            "Confidence": 97.72018432617188
+          },
+          {
+            "BoundingBox": {
+              "Width": 0.07538986206054688,
+              "Height": 0.20847654342651367,
+              "Left": 0.4756159484386444,
+              "Top": 0.6193639636039734
+            },
+            "Confidence": 97.66122436523438
+          },
+          {
+            "BoundingBox": {
+              "Width": 0.07982724159955978,
+              "Height": 0.1717875897884369,
+              "Left": 0.5372763872146606,
+              "Top": 0.6613996624946594
+            },
+            "Confidence": 96.823974609375
+          },
+          {
+            "BoundingBox": {
+              "Width": 0.075647734105587,
+              "Height": 0.055421192198991776,
+              "Left": 0.6510093808174133,
+              "Top": 0.766363263130188
+            },
+            "Confidence": 86.22917175292969
+          }
+        ],
+        "Parents": [
+          {
+            "Name": "Machine"
+          }
+        ],
+        "Aliases": [],
+        "Categories": [
+          {
+            "Name": "Vehicles and Automotive"
+          }
+        ]
+      },
+      {
+        "Name": "Outdoors",
+        "Confidence": 93.85565948486328,
+        "Instances": [],
+        "Parents": [],
+        "Aliases": [],
+        "Categories": [
+          {
+            "Name": "Nature and Outdoors"
+          }
+        ]
+      },
+      {
+        "Name": "Person",
+        "Confidence": 93.61375427246094,
+        "Instances": [
+          {
+            "BoundingBox": {
+              "Width": 0.05712788924574852,
+              "Height": 0.07856664061546326,
+              "Left": 0.5849496126174927,
+              "Top": 0.5253313183784485
+            },
+            "Confidence": 93.61375427246094
+          }
+        ],
+        "Parents": [],
+        "Aliases": [
+          {
+            "Name": "Human"
+          }
+        ],
+        "Categories": [
+          {
+            "Name": "Person Description"
+          }
+        ]
+      },
+      {
+        "Name": "Nature",
+        "Confidence": 93.46033477783203,
+        "Instances": [],
+        "Parents": [
+          {
+            "Name": "Outdoors"
+          }
+        ],
+        "Aliases": [],
+        "Categories": [
+          {
+            "Name": "Nature and Outdoors"
+          }
+        ]
+      },
+      {
+        "Name": "Bird",
+        "Confidence": 91.36446380615234,
+        "Instances": [
+          {
+            "BoundingBox": {
+              "Width": 0.022860271856188774,
+              "Height": 0.025753449648618698,
+              "Left": 0.9287171959877014,
+              "Top": 0.6849952936172485
+            },
+            "Confidence": 91.36446380615234
+          },
+          {
+            "BoundingBox": {
+              "Width": 0.02008991315960884,
+              "Height": 0.017783917486667633,
+              "Left": 0.9275444746017456,
+              "Top": 0.7114315629005432
+            },
+            "Confidence": 83.6767807006836
+          },
+          {
+            "BoundingBox": {
+              "Width": 0.031635794788599014,
+              "Height": 0.038142867386341095,
+              "Left": 0.8657613396644592,
+              "Top": 0.6858275532722473
+            },
+            "Confidence": 83.09610748291016
+          },
+          {
+            "BoundingBox": {
+              "Width": 0.013661225326359272,
+              "Height": 0.01826022006571293,
+              "Left": 0.3357175588607788,
+              "Top": 0.6663728356361389
+            },
+            "Confidence": 71.85081481933594
+          },
+          {
+            "BoundingBox": {
+              "Width": 0.013373756781220436,
+              "Height": 0.019984273239970207,
+              "Left": 0.8449373245239258,
+              "Top": 0.7087343335151672
+            },
+            "Confidence": 71.84288024902344
+          },
+          {
+            "BoundingBox": {
+              "Width": 0.012574155814945698,
+              "Height": 0.016592547297477722,
+              "Left": 0.12488935142755508,
+              "Top": 0.6590311527252197
+            },
+            "Confidence": 70.21389770507812
+          },
+          {
+            "BoundingBox": {
+              "Width": 0.016834894195199013,
+              "Height": 0.013226301409304142,
+              "Left": 0.27065932750701904,
+              "Top": 0.6618780493736267
+            },
+            "Confidence": 66.52596282958984
+          },
+          {
+            "BoundingBox": {
+              "Width": 0.013114229775965214,
+              "Height": 0.019887853413820267,
+              "Left": 0.17559251189231873,
+              "Top": 0.6592281460762024
+            },
+            "Confidence": 61.53901290893555
+          },
+          {
+            "BoundingBox": {
+              "Width": 0.013299910351634026,
+              "Height": 0.016322333365678787,
+              "Left": 0.255155473947525,
+              "Top": 0.6678414344787598
+            },
+            "Confidence": 60.8118782043457
+          }
+        ],
+        "Parents": [
+          {
+            "Name": "Animal"
+          }
+        ],
+        "Aliases": [],
+        "Categories": [
+          {
+            "Name": "Animals and Pets"
+          }
+        ]
+      },
+      {
+        "Name": "Tractor",
+        "Confidence": 90.49663543701172,
+        "Instances": [],
+        "Parents": [
+          {
+            "Name": "Transportation"
+          },
+          {
+            "Name": "Vehicle"
+          }
+        ],
+        "Aliases": [],
+        "Categories": [
+          {
+            "Name": "Vehicles and Automotive"
+          }
+        ]
+      },
+      {
+        "Name": "Vehicle",
+        "Confidence": 90.49663543701172,
+        "Instances": [],
+        "Parents": [
+          {
+            "Name": "Transportation"
+          }
+        ],
+        "Aliases": [],
+        "Categories": [
+          {
+            "Name": "Vehicles and Automotive"
+          }
+        ]
+      },
+      {
+        "Name": "Adventure",
+        "Confidence": 66.01266479492188,
+        "Instances": [],
+        "Parents": [
+          {
+            "Name": "Leisure Activities"
+          }
+        ],
+        "Aliases": [],
+        "Categories": [
+          {
+            "Name": "Travel and Adventure"
+          }
+        ]
+      },
+      {
+        "Name": "Countryside",
+        "Confidence": 57.89130783081055,
+        "Instances": [],
+        "Parents": [
+          {
+            "Name": "Nature"
+          },
+          {
+            "Name": "Outdoors"
+          }
+        ],
+        "Aliases": [],
+        "Categories": [
+          {
+            "Name": "Nature and Outdoors"
+          }
+        ]
+      },
+      {
+        "Name": "Field",
+        "Confidence": 57.59070587158203,
+        "Instances": [],
+        "Parents": [],
+        "Aliases": [],
+        "Categories": [
+          {
+            "Name": "Nature and Outdoors"
+          }
+        ]
+      },
+      {
+        "Name": "Offroad",
+        "Confidence": 56.691368103027344,
+        "Instances": [],
+        "Parents": [
+          {
+            "Name": "Adventure"
+          },
+          {
+            "Name": "Leisure Activities"
+          },
+          {
+            "Name": "Transportation"
+          },
+          {
+            "Name": "Vehicle"
+          }
+        ],
+        "Aliases": [],
+        "Categories": [
+          {
+            "Name": "Vehicles and Automotive"
+          }
+        ]
+      },
+      {
+        "Name": "Agriculture",
+        "Confidence": 56.111698150634766,
+        "Instances": [],
+        "Parents": [
+          {
+            "Name": "Countryside"
+          },
+          {
+            "Name": "Field"
+          },
+          {
+            "Name": "Nature"
+          },
+          {
+            "Name": "Outdoors"
+          }
+        ],
+        "Aliases": [],
+        "Categories": [
+          {
+            "Name": "Nature and Outdoors"
+          }
+        ]
+      },
+      {
+        "Name": "Tire",
+        "Confidence": 56.08004379272461,
+        "Instances": [],
+        "Parents": [],
+        "Aliases": [],
+        "Categories": [
+          {
+            "Name": "Vehicles and Automotive"
+          }
+        ]
+      },
+      {
+        "Name": "Rural",
+        "Confidence": 55.36146926879883,
+        "Instances": [],
+        "Parents": [
+          {
+            "Name": "Countryside"
+          },
+          {
+            "Name": "Nature"
+          },
+          {
+            "Name": "Outdoors"
+          }
+        ],
+        "Aliases": [],
+        "Categories": [
+          {
+            "Name": "Nature and Outdoors"
+          }
+        ]
+      }
+    ],
+    "LabelModelVersion": "3.0",
+    "ResponseMetadata": {
+      "RequestId": "a1207649-efeb-4006-a6ee-1cc1ad042897",
+      "HTTPStatusCode": 200,
+      "HTTPHeaders": {
+        "x-amzn-requestid": "a1207649-efeb-4006-a6ee-1cc1ad042897",
+        "content-type": "application/x-amz-json-1.1",
+        "content-length": "4904",
+        "date": "Tue, 10 Nov 2026 03:52:04 GMT"
+      },
+      "RetryAttempts": 0
+    }
+  }
+}

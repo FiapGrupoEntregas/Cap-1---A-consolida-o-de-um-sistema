@@ -1,0 +1,480 @@
+{
+  "imagem": "/home/ntl/workspace/Cap-1---A-consolida-o-de-um-sistema/fase6/data/amostras/vaca_02.jpg",
+  "quando": "2026-11-10T00:52:22",
+  "parametros": {
+    "MaxLabels": 15,
+    "MinConfidence": 50.0
+  },
+  "rotulos": [
+    {
+      "nome": "Animal",
+      "confianca": 99.94,
+      "pais": [],
+      "caixas": []
+    },
+    {
+      "nome": "Cattle",
+      "confianca": 99.94,
+      "pais": [
+        "Animal",
+        "Livestock",
+        "Mammal"
+      ],
+      "caixas": []
+    },
+    {
+      "nome": "Cow",
+      "confianca": 99.94,
+      "pais": [
+        "Animal",
+        "Cattle",
+        "Livestock",
+        "Mammal"
+      ],
+      "caixas": [
+        {
+          "width": 0.6558,
+          "height": 0.6528,
+          "left": 0.188,
+          "top": 0.1271,
+          "confianca": 99.85
+        }
+      ]
+    },
+    {
+      "nome": "Dairy Cow",
+      "confianca": 99.94,
+      "pais": [
+        "Animal",
+        "Cattle",
+        "Cow",
+        "Livestock",
+        "Mammal"
+      ],
+      "caixas": []
+    },
+    {
+      "nome": "Livestock",
+      "confianca": 99.94,
+      "pais": [],
+      "caixas": []
+    },
+    {
+      "nome": "Mammal",
+      "confianca": 99.94,
+      "pais": [
+        "Animal"
+      ],
+      "caixas": []
+    },
+    {
+      "nome": "Field",
+      "confianca": 66.9,
+      "pais": [],
+      "caixas": []
+    },
+    {
+      "nome": "Grassland",
+      "confianca": 66.9,
+      "pais": [
+        "Field",
+        "Nature",
+        "Outdoors"
+      ],
+      "caixas": []
+    },
+    {
+      "nome": "Nature",
+      "confianca": 66.9,
+      "pais": [
+        "Outdoors"
+      ],
+      "caixas": []
+    },
+    {
+      "nome": "Outdoors",
+      "confianca": 66.9,
+      "pais": [],
+      "caixas": []
+    },
+    {
+      "nome": "Bull",
+      "confianca": 53.76,
+      "pais": [
+        "Animal",
+        "Mammal"
+      ],
+      "caixas": []
+    },
+    {
+      "nome": "Countryside",
+      "confianca": 53.62,
+      "pais": [
+        "Nature",
+        "Outdoors"
+      ],
+      "caixas": []
+    },
+    {
+      "nome": "Grazing",
+      "confianca": 53.42,
+      "pais": [
+        "Countryside",
+        "Field",
+        "Grassland",
+        "Nature",
+        "Outdoors"
+      ],
+      "caixas": []
+    },
+    {
+      "nome": "Ranch",
+      "confianca": 53.23,
+      "pais": [
+        "Countryside",
+        "Farm",
+        "Nature",
+        "Outdoors",
+        "Rural"
+      ],
+      "caixas": []
+    },
+    {
+      "nome": "Angus",
+      "confianca": 52.52,
+      "pais": [
+        "Animal",
+        "Bull",
+        "Cattle",
+        "Livestock",
+        "Mammal"
+      ],
+      "caixas": []
+    }
+  ],
+  "resposta_bruta": {
+    "Labels": [
+      {
+        "Name": "Animal",
+        "Confidence": 99.94467163085938,
+        "Instances": [],
+        "Parents": [],
+        "Aliases": [],
+        "Categories": [
+          {
+            "Name": "Animals and Pets"
+          }
+        ]
+      },
+      {
+        "Name": "Cattle",
+        "Confidence": 99.94467163085938,
+        "Instances": [],
+        "Parents": [
+          {
+            "Name": "Animal"
+          },
+          {
+            "Name": "Livestock"
+          },
+          {
+            "Name": "Mammal"
+          }
+        ],
+        "Aliases": [],
+        "Categories": [
+          {
+            "Name": "Animals and Pets"
+          }
+        ]
+      },
+      {
+        "Name": "Cow",
+        "Confidence": 99.94467163085938,
+        "Instances": [
+          {
+            "BoundingBox": {
+              "Width": 0.6558210253715515,
+              "Height": 0.6528027653694153,
+              "Left": 0.18801544606685638,
+              "Top": 0.12711910903453827
+            },
+            "Confidence": 99.84911346435547
+          }
+        ],
+        "Parents": [
+          {
+            "Name": "Animal"
+          },
+          {
+            "Name": "Cattle"
+          },
+          {
+            "Name": "Livestock"
+          },
+          {
+            "Name": "Mammal"
+          }
+        ],
+        "Aliases": [],
+        "Categories": [
+          {
+            "Name": "Animals and Pets"
+          }
+        ]
+      },
+      {
+        "Name": "Dairy Cow",
+        "Confidence": 99.94467163085938,
+        "Instances": [],
+        "Parents": [
+          {
+            "Name": "Animal"
+          },
+          {
+            "Name": "Cattle"
+          },
+          {
+            "Name": "Cow"
+          },
+          {
+            "Name": "Livestock"
+          },
+          {
+            "Name": "Mammal"
+          }
+        ],
+        "Aliases": [],
+        "Categories": [
+          {
+            "Name": "Animals and Pets"
+          }
+        ]
+      },
+      {
+        "Name": "Livestock",
+        "Confidence": 99.94467163085938,
+        "Instances": [],
+        "Parents": [],
+        "Aliases": [],
+        "Categories": [
+          {
+            "Name": "Animals and Pets"
+          }
+        ]
+      },
+      {
+        "Name": "Mammal",
+        "Confidence": 99.94467163085938,
+        "Instances": [],
+        "Parents": [
+          {
+            "Name": "Animal"
+          }
+        ],
+        "Aliases": [],
+        "Categories": [
+          {
+            "Name": "Animals and Pets"
+          }
+        ]
+      },
+      {
+        "Name": "Field",
+        "Confidence": 66.89981842041016,
+        "Instances": [],
+        "Parents": [],
+        "Aliases": [],
+        "Categories": [
+          {
+            "Name": "Nature and Outdoors"
+          }
+        ]
+      },
+      {
+        "Name": "Grassland",
+        "Confidence": 66.89981842041016,
+        "Instances": [],
+        "Parents": [
+          {
+            "Name": "Field"
+          },
+          {
+            "Name": "Nature"
+          },
+          {
+            "Name": "Outdoors"
+          }
+        ],
+        "Aliases": [],
+        "Categories": [
+          {
+            "Name": "Nature and Outdoors"
+          }
+        ]
+      },
+      {
+        "Name": "Nature",
+        "Confidence": 66.89981842041016,
+        "Instances": [],
+        "Parents": [
+          {
+            "Name": "Outdoors"
+          }
+        ],
+        "Aliases": [],
+        "Categories": [
+          {
+            "Name": "Nature and Outdoors"
+          }
+        ]
+      },
+      {
+        "Name": "Outdoors",
+        "Confidence": 66.89981842041016,
+        "Instances": [],
+        "Parents": [],
+        "Aliases": [],
+        "Categories": [
+          {
+            "Name": "Nature and Outdoors"
+          }
+        ]
+      },
+      {
+        "Name": "Bull",
+        "Confidence": 53.75627899169922,
+        "Instances": [],
+        "Parents": [
+          {
+            "Name": "Animal"
+          },
+          {
+            "Name": "Mammal"
+          }
+        ],
+        "Aliases": [],
+        "Categories": [
+          {
+            "Name": "Animals and Pets"
+          }
+        ]
+      },
+      {
+        "Name": "Countryside",
+        "Confidence": 53.624969482421875,
+        "Instances": [],
+        "Parents": [
+          {
+            "Name": "Nature"
+          },
+          {
+            "Name": "Outdoors"
+          }
+        ],
+        "Aliases": [],
+        "Categories": [
+          {
+            "Name": "Nature and Outdoors"
+          }
+        ]
+      },
+      {
+        "Name": "Grazing",
+        "Confidence": 53.42215347290039,
+        "Instances": [],
+        "Parents": [
+          {
+            "Name": "Countryside"
+          },
+          {
+            "Name": "Field"
+          },
+          {
+            "Name": "Grassland"
+          },
+          {
+            "Name": "Nature"
+          },
+          {
+            "Name": "Outdoors"
+          }
+        ],
+        "Aliases": [],
+        "Categories": [
+          {
+            "Name": "Animals and Pets"
+          }
+        ]
+      },
+      {
+        "Name": "Ranch",
+        "Confidence": 53.22583770751953,
+        "Instances": [],
+        "Parents": [
+          {
+            "Name": "Countryside"
+          },
+          {
+            "Name": "Farm"
+          },
+          {
+            "Name": "Nature"
+          },
+          {
+            "Name": "Outdoors"
+          },
+          {
+            "Name": "Rural"
+          }
+        ],
+        "Aliases": [],
+        "Categories": [
+          {
+            "Name": "Home and Indoors"
+          }
+        ]
+      },
+      {
+        "Name": "Angus",
+        "Confidence": 52.51839065551758,
+        "Instances": [],
+        "Parents": [
+          {
+            "Name": "Animal"
+          },
+          {
+            "Name": "Bull"
+          },
+          {
+            "Name": "Cattle"
+          },
+          {
+            "Name": "Livestock"
+          },
+          {
+            "Name": "Mammal"
+          }
+        ],
+        "Aliases": [],
+        "Categories": [
+          {
+            "Name": "Animals and Pets"
+          }
+        ]
+      }
+    ],
+    "LabelModelVersion": "3.0",
+    "ResponseMetadata": {
+      "RequestId": "99e5d813-3598-42b7-baee-80f979ba50aa",
+      "HTTPStatusCode": 200,
+      "HTTPHeaders": {
+        "x-amzn-requestid": "99e5d813-3598-42b7-baee-80f979ba50aa",
+        "content-type": "application/x-amz-json-1.1",
+        "content-length": "2876",
+        "date": "Tue, 10 Nov 2026 03:52:22 GMT"
+      },
+      "RetryAttempts": 0
+    }
+  }
+}

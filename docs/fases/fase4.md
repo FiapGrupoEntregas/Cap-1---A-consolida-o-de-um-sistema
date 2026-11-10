@@ -54,9 +54,23 @@ As credenciais do Oracle vêm do `.env` único da raiz (ver [`.env.example`](../
 ```bash
 cd fase4/src
 uv run python scripts/create_table.py          # cria a tabela SOIL_DATA (uma vez)
-uv run uvicorn api:app --port 8000             # API
-uv run streamlit run app.py                    # dashboard (em outro terminal)
+uv run uvicorn api:app --port 8000             # API (ou: python3 main.py fase4-api, na raiz)
+uv run streamlit run app.py                    # dashboard central (ou: python3 main.py fase4-dashboard)
 ```
+
+## Dashboard central (Fase 7)
+
+Em 08/11/2026 a dashboard virou a **dashboard central** do sistema, com `st.navigation`:
+
+| Página | Arquivo | O que faz |
+|---|---|---|
+| Início | `paginas/inicio.py` | Estado dos serviços (`.env`, API, Oracle, AWS) e o mapa das fases |
+| Análise de solo (Fase 4) | `paginas/analise_solo.py` | A dashboard original desta fase, sem mudança de comportamento |
+| Central de serviços | `paginas/central.py` | Um bloco por fase, com botões que disparam os serviços e mostram o resultado |
+
+Os botões chamam o `main.py` da raiz por `subprocess` (`core/servicos.py`), o mesmo caminho do
+terminal. Serviços que ficam no ar (API desta fase e dashboard da Fase 3) têm botões Iniciar/Parar;
+o processo roda em grupo próprio e o log vai para `.<serviço>.log` na raiz (ignorado pelo git).
 
 Para o ESP32: abrir `fase4/iot/` no VS Code com as extensões PlatformIO e Wokwi e iniciar a
 simulação com a API no ar.

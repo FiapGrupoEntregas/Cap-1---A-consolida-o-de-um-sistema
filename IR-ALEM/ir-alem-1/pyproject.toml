@@ -1,0 +1,10 @@
+[project]
+name = "farmtech-ir-alem-1"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "boto3>=1.43.126",
+    "matplotlib>=3.11.2",
+    "pillow>=12.3.0",
+    "python-dotenv>=1.2.4",
+]

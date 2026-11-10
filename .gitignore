@@ -32,3 +32,6 @@ runs/
 .DS_Store
 Thumbs.db
 .idea/
+
+# Logs dos serviços iniciados pela dashboard central (fase4/src/core/servicos.py)
+/.*.log
