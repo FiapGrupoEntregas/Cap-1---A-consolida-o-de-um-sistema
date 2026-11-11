@@ -1,0 +1,11 @@
+def main_menu():
+    print(f'\n{"="*50}')
+    print("--- FARMTCH SOLUTIONS - MENU ---")
+    print("1. Inserir Dados (Entrada)")
+    print("2. Listar Dados (Saída)")
+    print("3. Atualizar Dados")
+    print("4. Deletar Dados")
+    print("5. Atualizar arquivo CSV")
+    print("6. Sair")
+    print('='*50)
+    return input("Escolha uma opção: ").strip()

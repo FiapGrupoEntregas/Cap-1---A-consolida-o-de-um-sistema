@@ -1,0 +1,62 @@
+{
+  "version": 1,
+  "author": "Natanael Filho",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard-half", "id": "bb1", "top": -31.8, "left": -477.2, "attrs": {} },
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": -105.6, "left": -4.76, "attrs": {} },
+
+    { "type": "wokwi-dht22", "id": "dht1", "top": -201.3, "left": -120.6, "attrs": { "temperature": "24", "humidity": "60" } },
+
+    { "type": "wokwi-photoresistor-sensor", "id": "ldr1", "top": -51.2, "left": -699.4, "attrs": { "lux": "500" } },
+
+    { "type": "wokwi-potentiometer", "id": "soilMoisture1", "top": 54.5, "left": -643, "attrs": { "value": "512" } },
+    { "type": "wokwi-potentiometer", "id": "phSensor1", "top": 54.5, "left": -547.4, "attrs": { "value": "512" } },
+    { "type": "wokwi-potentiometer", "id": "nitrogen1", "top": 54.5, "left": -451.8, "attrs": { "value": "256" } },
+    { "type": "wokwi-potentiometer", "id": "phosphorus1", "top": 54.5, "left": -356.2, "attrs": { "value": "256" } },
+    { "type": "wokwi-potentiometer", "id": "potassium1", "top": 54.5, "left": -260.6, "attrs": { "value": "256" } },
+
+    { "type": "wokwi-resistor", "id": "r1", "top": -105.6, "left": -134.95, "rotate": 90, "attrs": { "value": "10000" } }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+
+    [ "bb1:1t.a", "bb1:1t.e", "red", [ "$bb" ] ],
+    [ "bb1:2t.a", "bb1:2t.e", "black", [ "$bb" ] ],
+
+    [ "esp:3V3", "bb1:1t.a", "red", [ "h-19.2", "v-9.6", "h-297.6" ] ],
+    [ "esp:GND.2", "bb1:2t.a", "black", [ "h-28.8", "v-9.6", "h-297.6" ] ],
+
+    [ "dht1:VCC", "bb1:1t.b", "red", [ "v9.6", "h-38.4" ] ],
+    [ "dht1:GND", "bb1:2t.b", "black", [ "v9.6", "h-48" ] ],
+    [ "dht1:SDA", "esp:15", "green", [ "v67.2", "h163.2" ] ],
+    [ "dht1:SDA", "r1:1", "green", [ "v0" ] ],
+    [ "r1:2", "bb1:1t.b", "red", [ "v0" ] ],
+
+    [ "ldr1:VCC", "bb1:1t.c", "red", [ "v0" ] ],
+    [ "ldr1:GND", "bb1:2t.c", "black", [ "v0" ] ],
+    [ "ldr1:AO", "esp:34", "blue", [ "h220.8", "v-124.8" ] ],
+
+    [ "soilMoisture1:VCC", "bb1:1t.d", "red", [ "v0" ] ],
+    [ "soilMoisture1:GND", "bb1:2t.d", "black", [ "v0" ] ],
+    [ "soilMoisture1:SIG", "esp:32", "green", [ "h288", "v-172.8" ] ],
+
+    [ "phSensor1:VCC", "bb1:1t.e", "red", [ "v0" ] ],
+    [ "phSensor1:GND", "bb1:2t.e", "black", [ "v0" ] ],
+    [ "phSensor1:SIG", "esp:33", "gold", [ "h288", "v-192" ] ],
+
+    [ "nitrogen1:VCC", "bb1:1t.f", "red", [ "v0" ] ],
+    [ "nitrogen1:GND", "bb1:2t.f", "black", [ "v0" ] ],
+    [ "nitrogen1:SIG", "esp:35", "magenta", [ "h288", "v-220.8" ] ],
+
+    [ "phosphorus1:VCC", "bb1:1t.g", "red", [ "v0" ] ],
+    [ "phosphorus1:GND", "bb1:2t.g", "black", [ "v0" ] ],
+    [ "phosphorus1:SIG", "esp:25", "cyan", [ "h288", "v-268.8" ] ],
+
+    [ "potassium1:VCC", "bb1:1t.h", "red", [ "v0" ] ],
+    [ "potassium1:GND", "bb1:2t.h", "black", [ "v0" ] ],
+    [ "potassium1:SIG", "esp:26", "limegreen", [ "h288", "v-288" ] ]
+  ],
+  "dependencies": {}
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "imagem": "trator_01.jpg",
+    "verdade": "trator",
+    "rekognition_classe": "trator",
+    "rekognition_confianca": 90.5,
+    "caixas": 15,
+    "yolo_classe": "trator",
+    "yolo_confianca": 61.4
+  },
+  {
+    "imagem": "trator_02.jpg",
+    "verdade": "trator",
+    "rekognition_classe": "trator",
+    "rekognition_confianca": 81.22,
+    "caixas": 7,
+    "yolo_classe": "trator",
+    "yolo_confianca": 73.9
+  },
+  {
+    "imagem": "vaca_01.jpg",
+    "verdade": "vaca",
+    "rekognition_classe": "vaca",
+    "rekognition_confianca": 99.59,
+    "caixas": 1,
+    "yolo_classe": "vaca",
+    "yolo_confianca": 60.5
+  },
+  {
+    "imagem": "vaca_02.jpg",
+    "verdade": "vaca",
+    "rekognition_classe": "vaca",
+    "rekognition_confianca": 99.94,
+    "caixas": 1,
+    "yolo_classe": "vaca",
+    "yolo_confianca": 83.6
+  }
+]

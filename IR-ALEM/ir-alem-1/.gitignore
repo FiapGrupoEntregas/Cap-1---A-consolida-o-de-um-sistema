@@ -1,0 +1,4 @@
+.venv/
+__pycache__/
+# Imagens anotadas pelo YOLO durante a comparação (o detect.py da Fase 6 já as guarda em fase6/saidas)
+resultados/yolo/

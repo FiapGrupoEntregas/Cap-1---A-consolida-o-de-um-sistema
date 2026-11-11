@@ -1,0 +1,54 @@
+[project]
+name = "farmtech-fase6-visao-computacional"
+version = "0.2.0"
+description = "FarmTech Solutions – Fase 6 (FIAP): detecção de trator e vaca com YOLOv5 customizado"
+requires-python = ">=3.10,<3.14"
+# Instalado por padrão no `uv sync`: o necessário para rodar `src/detect.py` com o best.pt.
+# São as dependências do requirements.txt do ultralytics/yolov5 (commit f9578796), com o PyTorch
+# na versão para CPU (ver [tool.uv.sources]): a detecção roda em qualquer máquina, sem CUDA.
+dependencies = [
+    "torch>=2.0.0",
+    "torchvision>=0.15.0",
+    "ultralytics>=8.4.164",
+    "ultralytics-thop>=2.2.1",
+    "gitpython>=3.1.30",
+    "opencv-python>=4.6.0",
+    "psutil",
+    "pyyaml>=5.3.1",
+    "requests>=2.32.2",
+    "scipy>=1.4.1",
+    "tqdm>=4.66.3",
+    "numpy>=1.23.5",
+    "pandas>=1.1.4",
+    "matplotlib>=3.3",
+    "seaborn>=0.11.0",
+    "pillow>=10.3.0",
+    "packaging",
+    "setuptools>=70.0.0",
+]
+
+[project.optional-dependencies]
+# Só para refazer o dataset do zero (seção 1 do notebook): CLIP é o codificador de texto do YOLO-World,
+# usado na pré-rotulação dos tratores
+dataset = ["clip @ git+https://github.com/ultralytics/CLIP.git"]
+
+[dependency-groups]
+# `uv sync --group notebook`: abre e roda o notebook de treino (TensorFlow para a CNN do zero, Jupyter)
+notebook = ["tensorflow>=2.16", "scikit-learn", "jupyterlab", "ipykernel"]
+
+[tool.uv]
+# Projeto de notebooks/scripts, não é um pacote Python instalável
+package = false
+# Nenhum grupo entra por padrão: `uv sync` instala só a detecção
+default-groups = []
+
+# PyTorch para CPU em Linux e Windows (no macOS o PyPI já distribui a versão sem CUDA).
+# O treino de verdade foi feito no Google Colab com GPU; localmente só fazemos inferência.
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[tool.uv.sources]
+torch = [{ index = "pytorch-cpu", marker = "sys_platform == 'linux' or sys_platform == 'win32'" }]
+torchvision = [{ index = "pytorch-cpu", marker = "sys_platform == 'linux' or sys_platform == 'win32'" }]
