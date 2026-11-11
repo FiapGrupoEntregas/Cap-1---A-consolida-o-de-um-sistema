@@ -1,6 +1,6 @@
 # 04 — Serviço de alerta na AWS
 
-**Critério:** 6 — Serviço de alertas na AWS (3 pts) · **Depende de:** leituras em `SOIL_DATA` (Fase 4) · **Situação:** 🟨 código pronto e testado no floci (08/11/2026); falta a AWS real
+**Critério:** 6 — Serviço de alertas na AWS (3 pts) · **Depende de:** leituras em `SOIL_DATA` (Fase 4) · **Situação:** ✅ código testado no floci (08/11/2026) e publicado na AWS real (10/11/2026)
 
 ## Objetivo
 
@@ -124,19 +124,19 @@ Mostra o monitoramento rodando *na* AWS, não só a partir do computador.
 
 ### Passo 6 — Evidências no repositório
 
-- [ ] Salvar os prints em `docs/imagens/aws/` (`01-orcamento.png`, `02-topico.png`,
-      `03-assinaturas.png`, `04-politica-iam.png`, `05-email.png`, `06-monitoring.png`, `07-lambda.png`).
-- [ ] No README, seção "Serviço de alertas na AWS": inserir cada print com uma legenda de 1 a 2
+- [x] Salvar os prints em `docs/imagens/aws/`: `02-topics.png`, `03-subscriptions.png`, `04-IAM.png`,
+      `05-email.png` e `06-lambda.png` (orçamento e Monitoring ficaram de fora).
+- [x] No README, seção "Serviço de alertas na AWS": inserir cada print com uma legenda de 1 a 2
       linhas dizendo o que ele mostra e por que importa (tópico criado, assinatura confirmada, menor
       privilégio, e-mail com a ação corretiva).
-- [ ] Conferir com `git grep -n AKIA` que nenhuma chave foi parar no repositório.
+- [x] Conferir com `git grep -n AKIA` que nenhuma chave foi parar no repositório.
 - [ ] Ao terminar, pode desativar a access key no IAM (o tópico e a assinatura não custam nada).
 
 ## Critério de pronto
 
 - [x] Uma leitura fora do limite gera a mensagem com problema e ação corretiva (floci).
-- [ ] O mesmo acontece na AWS real e o e-mail chega.
-- [ ] Prints do console da AWS comentados no README.
+- [x] O mesmo acontece na AWS real e o e-mail chega.
+- [x] Prints do console da AWS comentados no README.
 - [x] Nenhuma credencial no repositório (`.env` ignorado; `.env.example` só com exemplos).
 
 ## Por que não só o floci

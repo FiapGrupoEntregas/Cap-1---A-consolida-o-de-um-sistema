@@ -6,11 +6,11 @@
 
 - [ ] Integrantes com **nome completo** e RM. Os nomes atuais estão abreviados ("Natanael Filho",
       "Pedro Henrique"…) e a lista mudou de fase para fase: confirmar quem é o grupo da Fase 7.
-- [ ] Tabela de status atualizada no fim.
-- [ ] Seção "Serviço de alertas na AWS" com os prints comentados ([04](04-alerta-aws.md)).
-- [ ] Arquitetura final (sem linhas tracejadas de "em construção").
+- [x] Tabela de status atualizada no fim.
+- [x] Seção "Serviço de alertas na AWS" com os prints comentados ([04](04-alerta-aws.md)).
+- [x] Arquitetura final (sem linhas tracejadas de "em construção").
 - [ ] "Como executar" centrado no `main.py` e na dashboard; testar tudo num clone novo.
-- [ ] Link do vídeo.
+- [x] Link do vídeo.
 
 ## Roteiro do vídeo (até 10 min)
 
@@ -26,7 +26,7 @@
 | 6:45–8:45 | Alerta: leitura fora do limite → SNS → e-mail chegando; console da AWS |
 | 8:45–9:30 | Fechamento: como o sistema se adapta a outros setores trocando os dados |
 
-- [ ] Gravar com voz ou legenda; publicar no YouTube como **não listado**.
+- [x] Gravar com voz ou legenda; publicar no YouTube como **não listado**.
 
 ## Entrega no portal
 

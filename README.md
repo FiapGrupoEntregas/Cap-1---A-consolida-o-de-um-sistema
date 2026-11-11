@@ -53,11 +53,11 @@ setor trocando as bases de dados.
 | Fase 6 como serviço: `detect.py` recebe uma imagem e devolve trator/vaca | ✅ testado em 08/11/2026 |
 | Dashboard final que dispara cada serviço por botão (Central de serviços) | ✅ testado em 08/11/2026 |
 | Comando de terminal que dispara cada serviço (`main.py`) | ✅ testado em 08/11/2026 |
-| Serviço de alerta na AWS (SNS + e-mail) com ações corretivas | 🟨 código pronto e testado no floci em 08/11/2026; falta publicar na AWS real |
-| Prints do console da AWS comentados | ⬜ a fazer |
-| Vídeo demonstrativo (até 10 min, não listado) | ⬜ a fazer |
-| Ir Além 2 (algoritmo genético) | ✅ notebook executado em 09/11/2026 ([`IR-ALEM/`](IR-ALEM/)) · vídeo a gravar |
-| Ir Além 1 (AWS Rekognition) | 🟨 código e documentação prontos em 09/11/2026 ([`IR-ALEM/`](IR-ALEM/)); falta rodar na conta AWS, prints e vídeo |
+| Serviço de alerta na AWS (SNS + e-mail) com ações corretivas | ✅ publicado na AWS real (`us-east-2`) em 10/11/2026; e-mail recebido |
+| Prints do console da AWS comentados | ✅ na seção "Serviço de alertas na AWS" |
+| Vídeo demonstrativo (até 10 min, não listado) | ✅ [publicado](https://www.youtube.com/watch?v=pPwR5JdXkLs) |
+| Ir Além 2 (algoritmo genético) | ✅ notebook executado em 09/11/2026 ([`IR-ALEM/`](IR-ALEM/)) · [vídeo](https://www.youtube.com/watch?v=DPyKYEPvGrw) publicado |
+| Ir Além 1 (AWS Rekognition) | ✅ executado na AWS em 10/11/2026 ([`IR-ALEM/`](IR-ALEM/)) · [vídeo](https://www.youtube.com/watch?v=dUIEMmM8TjQ) publicado |
 
 O que falta, frente por frente, está no [plano de entrega](docs/plano-entrega/README.md).
 
@@ -79,8 +79,8 @@ técnicos estão em [`docs/fases/`](docs/fases/).
 ## 🏗️ Arquitetura
 
 A dashboard central e o `main.py` são a Fase 7: os botões da dashboard chamam o `main.py`, que roda
-cada fase no próprio ambiente. As linhas tracejadas são as partes que ainda estão em construção
-(alerta na AWS) ou que não se disparam por botão (notebook da Fase 5).
+cada fase no próprio ambiente. As linhas tracejadas são as partes opcionais ou que não se disparam
+por botão: o notebook da Fase 5 e a detecção do YOLO como entrada do alerta.
 
 ```mermaid
 flowchart LR
@@ -95,7 +95,6 @@ flowchart LR
     F1["Fase 1<br/>Python + R"]
     F5["Fase 5<br/>notebook de ML"]
     F6["Fase 6<br/>YOLO"]
-    SNS["Amazon SNS<br/>farmtech-alertas"]
     MAIL["E-mail dos<br/>funcionários"]
 
     OM --> ESP2
@@ -111,8 +110,13 @@ flowchart LR
     ORA -->|últimas leituras| AL
     F6 -.->|detecção opcional| AL
     CLI --> AL
+    subgraph AWS["AWS (us-east-2)"]
+        SNS["Amazon SNS<br/>farmtech-alertas"]
+        LBD["AWS Lambda<br/>farmtech-alertas<br/>mesmas regras"]
+    end
     AL -->|sns.publish| SNS
-    SNS -.-> MAIL
+    LBD -->|sns.publish| SNS
+    SNS --> MAIL
 ```
 
 ## 🔔 Serviço de alertas na AWS
@@ -147,9 +151,43 @@ As regras têm testes (`cd alerta && uv run pytest`).
   [floci](https://floci.io/), emulador da AWS na porta 4566. `python3 main.py alerta-floci preparar`
   cria o tópico e uma fila SQS assinante; `python3 main.py alerta-floci ler` mostra as mensagens que
   chegaram. Com `AWS_ENDPOINT_URL=http://localhost:4566` no `.env`, o mesmo código boto3 fala com o floci.
-- **AWS real (pendente):** o passo a passo está em
-  [`docs/plano-entrega/04-alerta-aws.md`](docs/plano-entrega/04-alerta-aws.md). Os prints do console
-  (tópico, assinatura confirmada, usuário IAM, e-mail recebido) entram aqui, em `docs/imagens/aws/`.
+- **AWS real (em uso desde 10/11/2026):** tópico, assinatura e usuário IAM na região `us-east-2`,
+  com o passo a passo em [`docs/plano-entrega/04-alerta-aws.md`](docs/plano-entrega/04-alerta-aws.md).
+  O `.env` aponta para a AWS quando a linha `AWS_ENDPOINT_URL` está comentada.
+
+### Evidências no console da AWS
+
+**1. Tópico SNS.** O tópico `farmtech-alertas`, do tipo Standard, é o canal único dos alertas: o
+`alerta.py` e a Lambda publicam nele, e a AWS entrega a mensagem a todos os assinantes.
+
+![Tópico farmtech-alertas no Amazon SNS](docs/imagens/aws/02-topics.png)
+
+**2. Assinatura de e-mail confirmada.** Cada funcionário que deve receber os alertas entra como uma
+assinatura do protocolo EMAIL. A AWS só entrega depois que a pessoa confirma pelo link, por isso o
+status **Confirmed** é a prova de que o e-mail está ativo.
+
+![Assinatura de e-mail confirmada no tópico](docs/imagens/aws/03-subscriptions.png)
+
+**3. Permissão mínima no IAM.** A política `farmtech-fase7` é a única do usuário `farmtech-alerta`,
+cuja chave o `alerta.py` usa, e da role da Lambda. No SNS ela só permite publicar (Limited: Write) e
+só no tópico `farmtech-alertas` em `us-east-2`. Se a chave vazar, não serve para mais nada na conta.
+A outra permissão, leitura no Rekognition, é a do Ir Além 1.
+
+![Política farmtech-fase7 no IAM](docs/imagens/aws/04-IAM.png)
+
+**4. E-mail recebido.** Alerta real enviado por `python3 main.py alerta` a partir da última leitura de
+`SOIL_DATA` no Oracle: umidade 50 %, pH 7,0, N 25 %, P e K 0 %. Os cinco problemas chegam com a ação
+corretiva de cada um, e o remetente `no-reply@sns.amazonaws.com` confirma que passou pelo SNS.
+
+![E-mail de alerta com problemas e ações corretivas](docs/imagens/aws/05-email.png)
+
+**5. As mesmas regras numa Lambda.** A função `farmtech-alertas` roda dentro da AWS o mesmo código de
+regras ([`alerta/lambda_function.py`](alerta/lambda_function.py)): recebe uma leitura em JSON, avalia
+e publica no mesmo tópico. O gatilho do EventBridge já está ligado para execuções agendadas. Como a
+Lambda não alcança o Oracle da FIAP, hoje ela avalia a leitura enviada no evento; buscar as leituras
+direto da nuvem é a próxima melhoria.
+
+![Função farmtech-alertas no AWS Lambda com gatilho do EventBridge](docs/imagens/aws/06-lambda.png)
 
 ## 📁 Estrutura de pastas
 
@@ -269,10 +307,16 @@ Os mesmos serviços, sem o `main.py`:
 
 ## 🎬 Vídeo demonstrativo
 
-O link do vídeo (YouTube, não listado, até 10 minutos) será adicionado aqui.
+| Vídeo | Link |
+|---|---|
+| Apresentação principal (entrega da Fase 7) | https://www.youtube.com/watch?v=pPwR5JdXkLs |
+| Ir Além 1 — Amazon Rekognition | https://www.youtube.com/watch?v=dUIEMmM8TjQ |
+| Ir Além 2 — Algoritmo genético | https://www.youtube.com/watch?v=DPyKYEPvGrw |
 
 ## 🗃 Histórico de lançamentos
 
+* 0.8.0 — 10/11/2026: alerta publicado na AWS real (SNS em `us-east-2`, usuário IAM com permissão
+  mínima e Lambda com as mesmas regras), prints do console comentados e links dos três vídeos.
 * 0.7.0 — 09/11/2026: Ir Além 1 (`IR-ALEM/ir-alem-1/`): script do Rekognition com comparação ao YOLO,
   figura e justificativa; cronograma de execução na AWS em `docs/plano-entrega/cronograma-aws.md`.
 * 0.6.0 — 09/11/2026: Ir Além 2 em `IR-ALEM/ir-alem-2/`: plano de manejo com orçamento limitado

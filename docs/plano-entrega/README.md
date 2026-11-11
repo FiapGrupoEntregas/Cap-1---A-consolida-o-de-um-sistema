@@ -22,13 +22,13 @@ pasta traz o objetivo, as tarefas, as decisões e o critério de pronto da sua f
 | # | Critério | Peso | Frente | Situação |
 |---|---|---|---|---|
 | 5 | Sistema integrado e dashboard | 3,0 | [01](01-fase6-deteccao.md), [02](02-cli-main.md), [03](03-dashboard-central.md) | ✅ 01, 02 e 03 prontas: detecção, `main.py` e Central de serviços na dashboard |
-| 6 | Alertas na AWS | 3,0 | [04](04-alerta-aws.md) | 🟨 serviço pronto e testado no floci; falta publicar na AWS real e tirar os prints |
-| 2 | README | 1,0 | [05](05-documentacao-video-entrega.md) | 🟨 estruturado; faltam AWS, nomes completos e vídeo |
+| 6 | Alertas na AWS | 3,0 | [04](04-alerta-aws.md) | ✅ publicado na AWS real, com e-mail recebido e prints comentados no README |
+| 2 | README | 1,0 | [05](05-documentacao-video-entrega.md) | 🟨 falta só o nome completo dos integrantes |
 | 3 | Organização e boas práticas | 1,0 | todas | 🟨 pastas saneadas; falta o código novo |
-| 4 | Vídeo | 1,0 | [05](05-documentacao-video-entrega.md) | ⬜ |
+| 4 | Vídeo | 1,0 | [05](05-documentacao-video-entrega.md) | ✅ publicado como não listado |
 | 1 | Entrega, repositório e prazo | 1,0 | [05](05-documentacao-video-entrega.md) | ⬜ |
 | 7 | Equipe de 4 a 5 integrantes | +1,0 | [05](05-documentacao-video-entrega.md) | conferir a lista final de integrantes |
-| — | Ir Além 1 e 2 | opcional | [06](06-ir-alem.md) | 🟨 Ir Além 2 pronto (falta o vídeo); Ir Além 1 depende da AWS |
+| — | Ir Além 1 e 2 | opcional | [06](06-ir-alem.md) | ✅ os dois com vídeo; faltam só os prints do Ir Além 1 |
 
 ## Já feito (08/11/2026)
 
@@ -72,10 +72,10 @@ flowchart LR
 ## Definição de pronto da entrega
 
 - [x] Cada serviço das Fases 1, 2, 3 e 6 dispara por um botão **e** por um comando do `main.py`.
-- [ ] Um e-mail de alerta real, com problema e ação corretiva, chega a partir de uma leitura de sensor.
-- [ ] Prints do console da AWS em `docs/imagens/aws/`, comentados no README.
+- [x] Um e-mail de alerta real, com problema e ação corretiva, chega a partir de uma leitura de sensor.
+- [x] Prints do console da AWS em `docs/imagens/aws/`, comentados no README.
 - [ ] README com nomes completos, RMs, instruções que funcionam num clone novo e link do vídeo.
-- [ ] Vídeo de até 10 min publicado como não listado.
+- [x] Vídeo de até 10 min publicado como não listado.
 - [ ] Branch `feature/entrega-cap-1-fase7` integrada na `main`; repositório privado e compartilhado
       com `fiap-tutoria`.
 - [ ] `.txt` enviado no portal **antes** do prazo; nenhum commit depois do envio.

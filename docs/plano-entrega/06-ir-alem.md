@@ -1,6 +1,6 @@
 # 06 — Ir Além (opcional)
 
-**Situação:** 🟨 Ir Além 2 pronto (falta o vídeo); Ir Além 1 com código e documentação prontos, falta rodar na AWS (ver [cronograma](cronograma-aws.md)).
+**Situação:** ✅ Ir Além 2 pronto, com vídeo; Ir Além 1 rodado na AWS e com vídeo, faltam só os prints restantes (ver [cronograma](cronograma-aws.md)).
 
 Os dois desafios vão na pasta `IR-ALEM/` do mesmo repositório, cada um com um vídeo de até
 4 minutos (não listado) cujo link entra no `.txt` e no README.
@@ -14,7 +14,7 @@ Os dois desafios vão na pasta `IR-ALEM/` do mesmo repositório, cada um com um 
 - [x] Rodado na AWS real em 10/11/2026: 4/4 classes nos dois; Rekognition 81–99,9 %, YOLO 60–84 %;
       Rekognition sem caixa no trator. `resultados/` pronta para commitar.
 - [ ] Prints em `IR-ALEM/ir-alem-1/prints/` (lista e campos explicados em `IR-ALEM/README.md`).
-- [ ] Vídeo de até 4 min (não listado).
+- [x] Vídeo de até 4 min (não listado): https://www.youtube.com/watch?v=dUIEMmM8TjQ
 
 ## Ir Além 2 — Algoritmo genético
 
@@ -26,7 +26,7 @@ Os dois desafios vão na pasta `IR-ALEM/` do mesmo repositório, cada um com um 
       10 sementes, comparadas em aptidão e tempo; validação com força bruta (18 itens) e heurística gulosa.
 - [x] Tabela de parâmetros com justificativa, figura autoral da arquitetura (`figuras/01-arquitetura.png`)
       e 4 figuras de resultados. Resumo em `IR-ALEM/README.md`.
-- [ ] Vídeo de até 4 min (não listado): problema → dados → AG → comparação → plano final.
+- [x] Vídeo de até 4 min (não listado): https://www.youtube.com/watch?v=DPyKYEPvGrw
 
 **Nota sobre o Ir Além 1:** o Rekognition do floci devolve um rótulo falso ("Floci", 99,9 %) para qualquer
 imagem e não implementa coleções, então não serve de evidência. Na AWS real o `DetectLabels` custa

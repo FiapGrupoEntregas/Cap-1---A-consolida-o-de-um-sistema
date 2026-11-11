@@ -5,8 +5,8 @@ README da raiz e no `.txt` da entrega.
 
 | Desafio | Pasta | Situação | Vídeo |
 |---|---|---|---|
-| Ir Além 1 — AWS Rekognition | [`ir-alem-1/`](ir-alem-1/) | ✅ executado na AWS real em 10/11/2026 (`resultados/`); faltam os prints restantes e o vídeo | a gravar |
-| Ir Além 2 — Algoritmo genético | [`ir-alem-2/`](ir-alem-2/) | ✅ notebook executado em 09/11/2026 | a gravar |
+| Ir Além 1 — AWS Rekognition | [`ir-alem-1/`](ir-alem-1/) | ✅ executado na AWS real em 10/11/2026 (`resultados/`); faltam os prints restantes | [YouTube](https://www.youtube.com/watch?v=dUIEMmM8TjQ) |
+| Ir Além 2 — Algoritmo genético | [`ir-alem-2/`](ir-alem-2/) | ✅ notebook executado em 09/11/2026 | [YouTube](https://www.youtube.com/watch?v=DPyKYEPvGrw) |
 
 ## Ir Além 2 — Plano de manejo com algoritmo genético
 
